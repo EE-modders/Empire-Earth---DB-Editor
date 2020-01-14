@@ -75,8 +75,10 @@ public class FrameMain extends JFrame implements WindowListener {
 		
 		dbLoad = new JButtonRed("Load dat files");
 		final JButton dbInfo = new JButtonRed("About");
+		final JButton dbExit = new JButtonRed("Exit");
 		dbLoad.addActionListener(this::loadFiles);
 		dbInfo.addActionListener(evt -> JOptionPane.showMessageDialog(this, S_ABOUT, "About", JOptionPane.INFORMATION_MESSAGE, GUI.IMAGE_EE_HEAVEN_LOGO));
+		dbExit.addActionListener(evt -> System.exit((0)));
 
 		final JLabel scrollPaneLabel = new JLabel("Loaded data");
 		scrollPaneLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -103,6 +105,7 @@ public class FrameMain extends JFrame implements WindowListener {
 		contentPane.add(new JLabel(GUI.IMAGE_LOGO), new GridBagConstraintsExtended(5, 25, 5, 25, 0, 0));
 		contentPane.add(dbLoad, new GridBagConstraintsExtended(10, 25, 5, 25, 0, 1));
 		contentPane.add(dbInfo, new GridBagConstraintsExtended(5, 25, 10, 25, 0, 2));
+		contentPane.add(dbExit, new GridBagConstraintsExtended(5, 260, 15, 260, 0, 3));
 
 		setContentPane(contentPane);
 		setBounds(GUI.getBounds(this, 680, 400));

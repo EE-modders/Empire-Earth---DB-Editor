@@ -8,7 +8,7 @@ public class StringIterator implements Iterator<String> {
 	private final String separatorS;
 
 	private int pos = 0;
-
+	
 	public StringIterator(String text, char separator) {
 		this.text = text;
 		separatorC = separator;

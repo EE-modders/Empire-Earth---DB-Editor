@@ -87,7 +87,7 @@ public abstract class DatStructure {
 		return commonFieldsMap.get(name);
 	}
 
-
+	
 	/**
 	 * Initialize the structures outside the constructor.
 	 * This is needed as files can reference each other.
