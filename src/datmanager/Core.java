@@ -21,7 +21,7 @@ public class Core {
 
 	private static final String[] editorModeChoices = new String[] { "Vanilla", "Art of Conquest", "Exit"};
 	private static final String titleText = "Empire Earth - DB Editor";
-	private static final String popupText = "database version: " + Settings.DBVersion + "\n\n" + "Vanilla or AOC?";
+	private static final String popupText = "v" + Settings.VERSION + "\n" + "database version: " + Settings.DBVersion + "\n\n" + "Vanilla or AOC?";
 
 	/** If true, the editor is in AOC mode */
 	private static boolean AOC = false;
