@@ -19,7 +19,9 @@ import gui.FrameMain;
  */
 public class Core {
 
-	private static final String[] editorModeChoices = new String[] { "Vanilla", "Art of Conquest", "Exit" };
+	private static final String[] editorModeChoices = new String[] { "Vanilla", "Art of Conquest", "Exit"};
+	private static final String titleText = "Empire Earth - DB Editor";
+	private static final String popupText = "database version: " + Settings.DBVersion + "\n\n" + "Vanilla or AOC?";
 
 	/** If true, the editor is in AOC mode */
 	private static boolean AOC = false;
@@ -34,7 +36,7 @@ public class Core {
 	public static boolean isAOC() { return AOC; }
 
 	private static final File DataDirectory = Paths.get("EEEditorData").toFile();
-
+	
 	public static File getDataDirectory() { return new File(DataDirectory, Core.isAOC() ? "AOC" : "Vanilla"); }
 
 	public static String getGameDirectory() { return gameDirectory; }
@@ -43,16 +45,16 @@ public class Core {
 		final EESplashScreen splashScreen = new EESplashScreen();
 		splashScreen.setVisible(true);
 
-		switch (JOptionPane.showOptionDialog(splashScreen, "Vanilla or AOC?", "Empire Earth - DB Editor", 0, JOptionPane.QUESTION_MESSAGE, null, editorModeChoices, editorModeChoices[0])) {
+		switch (JOptionPane.showOptionDialog(splashScreen, popupText, titleText, 0, JOptionPane.QUESTION_MESSAGE, null, editorModeChoices, editorModeChoices[0])) {
 			case JOptionPane.CLOSED_OPTION:
-			case 2:
-				System.exit(0);
-				break;
 			case 0:
 				AOC = false;
 				break;
 			case 1:
 				AOC = true;
+				break;
+			case 2:
+				System.exit(0);
 				break;
 		}
 

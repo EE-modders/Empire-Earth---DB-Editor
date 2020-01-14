@@ -72,7 +72,7 @@ public class FrameMain extends JFrame implements WindowListener {
 	 */
 	public FrameMain() {
 		super("Empire Earth - " + (Core.isAOC() ? "Art of Conquest - " : "") + "DB Editor");
-
+		
 		dbLoad = new JButtonRed("Load dat files");
 		final JButton dbInfo = new JButtonRed("About");
 		dbLoad.addActionListener(this::loadFiles);
