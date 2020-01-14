@@ -45,9 +45,17 @@ import gui.misc.GridBagLayoutExtended;
 public class FrameMain extends JFrame implements WindowListener {
 
 	private static final long serialVersionUID = 1973882004055163035L;
-
+	
+	/** Text fields used in the ABOUT section */
+	public static final String S_NAME = "Empire Earth - DB Editor";
+	public static final String S_VERSION = "Version: " + Settings.VERSION;
+	public static final String S_DB_VERSION = "Database version: " + Settings.DBVersion;
+	public static final String S_AUTHOR = "Created by Forlins & the EE Heaven community";
+	public static final String S_LICENSE = "GNU General Public License v3";
+	public static final String S_DELIMITER = "-------------------------------------------";
+	
 	/** Text used in the ABOUT dialog */
-	public static final String S_ABOUT = "EE - DB Editor\nVersion: " + Settings.VERSION + "\nCreated by Forlins & the EE Heaven community   \nGNU General Public License v3   ";
+	public static final String S_ABOUT = String.join("\n", S_NAME, S_VERSION, S_DB_VERSION, S_DELIMITER, S_AUTHOR, S_LICENSE);
 
 	/** Singletone intance of FrameMain */
 	public static final FrameMain instance = new FrameMain();
