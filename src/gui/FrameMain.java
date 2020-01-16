@@ -101,14 +101,14 @@ public class FrameMain extends JFrame implements WindowListener {
 		scrollPane.setVisible(false);
 
 		contentPane.setBackground(GUI.COLOR_UI_BACKGROUND);
-		contentPane.setLayout(new GridBagLayoutExtended(new int[] { 680, 0 }, new int[] { 280, 50, 50 }, new double[] { 0, 1.0 }, new double[] { 1.0, 0.0, 0.0 }));
+		contentPane.setLayout(new GridBagLayoutExtended(new int[] { 680, 0 }, new int[] { 300, 50, 50 }, new double[] { 0, 1.0 }, new double[] { 1.0, 0.0, 0.0 }));
 		contentPane.add(new JLabel(GUI.IMAGE_LOGO), new GridBagConstraintsExtended(5, 25, 5, 25, 0, 0));
 		contentPane.add(dbLoad, new GridBagConstraintsExtended(10, 25, 5, 25, 0, 1));
 		contentPane.add(dbInfo, new GridBagConstraintsExtended(5, 25, 10, 25, 0, 2));
 		contentPane.add(dbExit, new GridBagConstraintsExtended(5, 260, 15, 260, 0, 3));
 
 		setContentPane(contentPane);
-		setBounds(GUI.getBounds(this, 680, 400));
+		setBounds(GUI.getBounds(this, 680, 450));
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		setResizable(false);
 		setAutoRequestFocus(false);
