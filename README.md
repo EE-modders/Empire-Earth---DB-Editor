@@ -12,8 +12,10 @@ Please tell us, when you find some unknown values.
 
 ### run the software
 
-- in order to run this software, you will need to have at least Java 8 JRE installed - but Java 11 is strongly recommended
-- you can download the latest version [from the releases](https://github.com/EE-modders/Empire-Earth---DB-Editor/releases) or from the [original repo](https://github.com/Forlini91/Empire-Earth---DB-Editor/releases).
+- in order to run this software, you will need to have at least Java 11 installed - this will *not work* with Java 8
+- you can download the latest version from the [release page](https://github.com/EE-modders/Empire-Earth---DB-Editor/releases)
 - run it ;)
 
 #### documentation on how to use the software can be found [here](https://github.com/EE-modders/Empire-Earth-toolbox/blob/master/Modding%20tools%20n%20scripts/EE%20DB-Editor.md).
+
+the original repo can be found [here](https://github.com/Forlini91/Empire-Earth---DB-Editor/releases)
