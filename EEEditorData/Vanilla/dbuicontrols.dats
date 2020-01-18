@@ -12,17 +12,17 @@
 11	@UNUSED_FLOAT
 12	@UNUSED_FLOAT
 13	@UNUSED_FLOAT
-14	4	FLOAT	Screen height from...	Screen height from...	EDITABLE	KNOWN	BLACK
-15	4	FLOAT	... to	... to	EDITABLE	KNOWN	BLACK
-16	4	FLOAT	Screen width from... 	Screen width from... 	EDITABLE	KNOWN	BLACK
-17	4	FLOAT	... to	... to	EDITABLE	KNOWN	BLACK
+14	4	FLOAT	Screen width from...	top left corner	EDITABLE	KNOWN	BLACK
+15	4	FLOAT	... to	bottom right corner	EDITABLE	KNOWN	BLACK
+16	4	FLOAT	Screen height from...	top left corner	EDITABLE	KNOWN	BLACK
+17	4	FLOAT	... to	bottom right corner	EDITABLE	KNOWN	BLACK
 18	@SEQ_NUMBER
 19	@ID
 20	@ID_UI_FORM
 21	4	INTEGER	Belongs to tab (0=all)	Belongs to tab (0=all)	EDITABLE	KNOWN	BLACK
 22	4	INTEGER	Type	Type	EDITABLE	KNOWN	BLACK
 23	4	INTEGER	Control index in form	Control index in form	EDITABLE	KNOWN	BLACK
-24	@UNKNOWN_INT4
+24	4	INTEGER	Border thickness	add a border to the box	EDITABLE	KNOWN	BLACK
 25	@UNKNOWN_INT4
 26	@UNKNOWN_INT4
 27	@UNKNOWN_INT4
@@ -36,7 +36,7 @@
 35	4	INTEGER	Red	Red	EDITABLE	KNOWN	BLACK
 36	4	INTEGER	Green	Green	EDITABLE	KNOWN	BLACK
 37	4	INTEGER	Blue	Blue	EDITABLE	KNOWN	BLACK
-38	@UNKNOWN_INT4
+38	4	INTEGER	Text alignment	0..left 1..middle 2..right	EDITABLE	KNOWN	BLACK
 39	@UNKNOWN_INT4
 40	@UNKNOWN_INT4
 41	@UNKNOWN_INT4
