@@ -6,11 +6,11 @@
 /Empire Earth - DB Editor.jar
 /EE Hex Editing Guide.pdf
 /Empire Earth - DB Editor - Manual.pdf
+*.zip
 /.gitignore
 =======
 
 \.directory
 /db_EE
 /db_AOC
->>>>>>> branch 'master' of git@github.com:Forlini91/Empire-Earth---DB-Editor.git
 
