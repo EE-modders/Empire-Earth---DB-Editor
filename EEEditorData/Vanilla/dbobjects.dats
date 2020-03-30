@@ -130,12 +130,12 @@
 129	@UNKNOWN_BOOL1
 130	@UNKNOWN_INT1
 131	@UNUSED_INT1
-132	4	LINK	dbgfxeffects.dat:0	Low health effect ID	Low health effect ID	EDITABLE	KNOWN	BLACK
-133	4	LINK	dbgfxeffects.dat:0	Death effect ID	Death effect ID	EDITABLE	KNOWN	BLACK
+132	4	LINK	dbgfxeffects.dat:0	Death effect ID	Death effect ID	EDITABLE	KNOWN	BLACK
+133	4	LINK	dbgfxeffects.dat:0	Low health effect ID	Low health effect ID	EDITABLE	KNOWN	BLACK
 134	4	LINK	dbgfxeffects.dat:0	Start of attack ID	Start of attack ID	EDITABLE	KNOWN	BLACK
 135	4	LINK	dbgfxeffects.dat:0	Unknown GFX effect	Unknown GFX effect	EDITABLE	UNKNOWN	BLACK
 136	4	LINK	dbgfxeffects.dat:0	Movement effect	Movement effect	EDITABLE	KNOWN	BLACK
-137	4	LINK	dbgfxeffects.dat:0	Unknown GFX effect	Unknown GFX effect	EDITABLE	UNKNOWN	BLACK
+137	4	LINK	dbgfxeffects.dat:0	Water hit effect	effect when object hits water	EDITABLE	KNOWN	BLACK
 138	4	LINK	dbgfxeffects.dat:0	Heal other effect ID	Heal other effect ID	EDITABLE	KNOWN	BLACK
 139	4	LINK	dbgfxeffects.dat:0	Unknown GFX effect	Unknown GFX effect	EDITABLE	UNKNOWN	BLACK
 140	4	LINK	dbgfxeffects.dat:0	Unknown GFX effect	Unknown GFX effect	EDITABLE	UNKNOWN	BLACK
