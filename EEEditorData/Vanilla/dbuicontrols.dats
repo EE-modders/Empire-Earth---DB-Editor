@@ -23,10 +23,10 @@
 22	4	INTEGER	Type	Type	EDITABLE	KNOWN	BLACK
 23	4	INTEGER	Control index in form	Control index in form	EDITABLE	KNOWN	BLACK
 24	4	INTEGER	Border thickness	add a border to the box	EDITABLE	KNOWN	BLACK
-25	@UNKNOWN_INT4
-26	@UNKNOWN_INT4
-27	@UNKNOWN_INT4
-28	@UNKNOWN_INT4
+25	4	INTEGER	left border position	0: left; 1/2: middle; 3: right; 4: ignore	EDITABLE	KNOWN	BLACK
+26	4	INTEGER	right border position	0: left; 1/2: middle; 3: right; 4: ignore	EDITABLE	KNOWN	BLACK
+27	4	INTEGER	bottom border position	0: top; 1/2: middle; 3: bottom; 4: ignore	EDITABLE	KNOWN	BLACK
+28	4	INTEGER	top border position	0: top; 1/2: middle; 3: bottom; 4: ignore	EDITABLE	KNOWN	BLACK
 29	4	INTEGER	Red	Red	EDITABLE	KNOWN	BLACK
 30	4	INTEGER	Green	Green	EDITABLE	KNOWN	BLACK
 31	4	INTEGER	Blue	Blue	EDITABLE	KNOWN	BLACK
@@ -36,7 +36,7 @@
 35	4	INTEGER	Red	Red	EDITABLE	KNOWN	BLACK
 36	4	INTEGER	Green	Green	EDITABLE	KNOWN	BLACK
 37	4	INTEGER	Blue	Blue	EDITABLE	KNOWN	BLACK
-38	4	INTEGER	Text alignment	0..left 1..middle 2..right	EDITABLE	KNOWN	BLACK
+38	4	INTEGER	Text alignment	0: left; 1:middle; 2:right	EDITABLE	KNOWN	BLACK
 39	@UNKNOWN_INT4
 40	@UNKNOWN_INT4
 41	@UNKNOWN_INT4
