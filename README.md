@@ -12,7 +12,7 @@ Please tell us, when you find some unknown values.
 
 ### run the software
 
-- in order to run this software, you will need to have at least Java 11 installed - this will *not work* with Java 8
+- in order to run this software, you will need to have at least Java 11 installed - **it will not start with Java 8**
 (you can test it in a terminal or cmd.exe by running `java --version`)
 - download the latest version from the [release page](https://github.com/EE-modders/Empire-Earth---DB-Editor/releases)
 - run it ;)
