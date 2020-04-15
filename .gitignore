@@ -1,16 +1,6 @@
-/Db - collegamento.lnk
-/bin/
-/DB - AOC.lnk
-/DB - Vanilla.lnk
-/DB - collegamento.lnk
+/bin
 /Empire Earth - DB Editor.jar
-/EE Hex Editing Guide.pdf
-/Empire Earth - DB Editor - Manual.pdf
+
+*.directory
 *.zip
-/.gitignore
-=======
-
-\.directory
-/db_EE
-/db_AOC
-
+*.lnk
