@@ -17,6 +17,6 @@ Please tell us, when you find some unknown values.
 - download the latest version from the [release page](https://github.com/EE-modders/Empire-Earth---DB-Editor/releases)
 - run it ;)
 
-#### documentation on how to use the software can be found [here](https://github.com/EE-modders/Empire-Earth-toolbox/blob/master/Modding%20tools%20n%20scripts/EE%20DB-Editor.md).
+#### documentation on how to use the software can be found in the [wiki](https://github.com/EE-modders/Empire-Earth---DB-Editor/wiki).
 
-the original repo can be found in the [wiki](https://github.com/EE-modders/Empire-Earth---DB-Editor/wiki).
+the original repo can be found in the [here](https://github.com/Forlini91/Empire-Earth---DB-Editor).
