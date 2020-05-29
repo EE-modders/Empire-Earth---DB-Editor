@@ -1,7 +1,7 @@
 All lines starting with # are ignored (you put them anywhere for comments or everything you need)
 All fields have structure with these parameters:
 
-		<Field number>	<Num bytes>	<Type>	<Extra data (Optional)>	<Name>	<Description>	<Editable>	<Knowledge>	<Color>
+<Field number>	<Num bytes>	<Type>	<Extra data (Optional)>	<Name>	<Description>	<Editable>	<Knowledge>	<Color>
 
 Each parameter is separated by a single Tabulation, so don't use Tabulations in Name or Description unless you want to unleash an apocalyspe
  - Field number: Just the number of the field as displayed in the Editor. Actually... THIS NUMBER IS NOT USED. It's just here to help YOU to find the field quickly in the file. Changing it won't have any effect.
