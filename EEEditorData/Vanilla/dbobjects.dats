@@ -105,10 +105,10 @@
 104	@UNKNOWN_INT1
 105	@UNKNOWN_INT1
 106	@UNKNOWN_INT1
-107	@UNKNOWN_FLOAT
+107	4	FLOAT	Minimum straigt line distance...	...after the rocket/bullet is fired	EDITABLE	KNOWN	BLACK
 108	4	FLOAT	Initial projectile angle	Initial projectile angle	EDITABLE	KNOWN	BLACK
 109	4	INTEGER	Ammo amount	Ammo amount	EDITABLE	KNOWN	BLACK
-110	1	BOOLEAN	<PROBABLY> Drop bombs	<PROBABLY> Drop bombs	EDITABLE	KNOWN	BLACK
+110	1	BOOLEAN	<PROBABLY> Can Drop bombs	<PROBABLY> Can Drop bombs	EDITABLE	KNOWN	BLACK
 111	@UNKNOWN_BOOL1
 112	@UNKNOWN_BOOL1
 113	1	BOOLEAN	<PROBABLY> Parabolic projectile	<PROBABLY> Parabolic projectile	EDITABLE	KNOWN	BLACK
@@ -118,7 +118,7 @@
 117	4	INTEGER	Category 2	Category 2	EDITABLE	KNOWN	BLACK
 118	4	INTEGER	Category 3	Category 3	EDITABLE	KNOWN	BLACK
 119	4	INTEGER	Category 4	Category 4	EDITABLE	KNOWN	BLACK
-120	@UNKNOWN_INT4
+120	4	BOOLEAN	Is allowed to put flag	Is allowed to put flag	EDITABLE	KNOWN	BLACK
 121	4	LINK	dbupgrade.dat:0	Updrade ID	Updrade ID	EDITABLE	KNOWN	BLACK
 122	4	INTEGER	<Used by units/buildings who can convert>	<Used by units/buildings who can convert>	EDITABLE	KNOWN	BLACK
 123	@UNKNOWN_FLOAT
@@ -227,8 +227,8 @@
 226	1	BOOLEAN	Is building?	Is building?	EDITABLE	KNOWN	BLACK
 227	1	BOOLEAN	Stealth	Stealth	EDITABLE	KNOWN	BLACK
 228	@UNKNOWN_BOOL1
-229	1	INTEGER	<Seems related to aircraft, but the clubman...>	<Seems related to aircraft, but the clubman...>	EDITABLE	KNOWN	BLACK
-230	@UNKNOWN_INT4
+229	1	BOOLEAN	Can land on airport?	Can land on airport?	EDITABLE	KNOWN	BLACK
+230	4	INTEGER	Can land on carrier	1: true, 0: false, 256:???	EDITABLE	KNOWN	BLACK
 231	4	LINK	dbobjects.dat:0	Spawn on death	Spawn on death	EDITABLE	KNOWN	BLACK
 232	4	INTEGER	Power	Power	EDITABLE	KNOWN	BLACK
 233	4	INTEGER	Power recover rate	Power recover rate	EDITABLE	KNOWN	BLACK

@@ -6,6 +6,6 @@
 5	@UNKNOWN_INT4
 6	@UNKNOWN_INT4
 7	@UNKNOWN_INT4
-8	@UNKNOWN_INT4
-9	@UNKNOWN_INT4
+8	4	BOOLEAN	Is looping sound	Is looping sound	EDITABLE	KNOWN	BLACK
+9	4	INTEGER	relative sound volume	volume compared to other sounds	KNOWN	BLACK
 10	@UNUSED_INT4
