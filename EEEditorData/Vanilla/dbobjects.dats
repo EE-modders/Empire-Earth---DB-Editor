@@ -108,7 +108,7 @@
 107	4	FLOAT	Minimum straigt line distance...	...after the rocket/bullet is fired	EDITABLE	KNOWN	BLACK
 108	4	FLOAT	Initial projectile angle	Initial projectile angle	EDITABLE	KNOWN	BLACK
 109	4	INTEGER	Ammo amount	Ammo amount	EDITABLE	KNOWN	BLACK
-110	1	BOOLEAN	<PROBABLY> Can Drop bombs	<PROBABLY> Can Drop bombs	EDITABLE	KNOWN	BLACK
+110	1	BOOLEAN	Clear flight time after bomb drop	Does the bomber clear the flight time after bombing?	EDITABLE	KNOWN	BLACK
 111	@UNKNOWN_BOOL1
 112	@UNKNOWN_BOOL1
 113	1	BOOLEAN	<PROBABLY> Parabolic projectile	<PROBABLY> Parabolic projectile	EDITABLE	KNOWN	BLACK
@@ -118,13 +118,13 @@
 117	4	INTEGER	Category 2	Category 2	EDITABLE	KNOWN	BLACK
 118	4	INTEGER	Category 3	Category 3	EDITABLE	KNOWN	BLACK
 119	4	INTEGER	Category 4	Category 4	EDITABLE	KNOWN	BLACK
-120	4	BOOLEAN	Is allowed to put flag	Is allowed to put flag	EDITABLE	KNOWN	BLACK
+120	4	BOOLEAN	Is allowed to put flag	Is it allowed to put the flag on the ground? (building)	EDITABLE	KNOWN	BLACK
 121	4	LINK	dbupgrade.dat:0	Updrade ID	Updrade ID	EDITABLE	KNOWN	BLACK
 122	4	INTEGER	<Used by units/buildings who can convert>	<Used by units/buildings who can convert>	EDITABLE	KNOWN	BLACK
 123	@UNKNOWN_FLOAT
 124	1	BOOLEAN	Can be owned by a player	In the editor you can place this object as belonging to a player	EDITABLE	KNOWN	BLACK
 125	1	BOOLEAN	Can be owned by "World"	In the editor you can place this object as belonging to "World"	EDITABLE	KNOWN	BLACK
-126	@UNKNOWN_BOOL1
+126	1	BOOLEAN	Kill this object in order to win?	Does this object affect the end of the game?	EDITABLE	KNOWN	BLACK
 127	@UNKNOWN_BOOL1
 128	1	BOOLEAN	You can kill this object with Delete key	You can kill this object with Delete key	EDITABLE	KNOWN	BLACK
 129	@UNKNOWN_BOOL1
@@ -196,7 +196,7 @@
 195	4	FLOAT	Carry capacity	Carry capacity	EDITABLE	KNOWN	BLACK
 196	@UNKNOWN_INT4
 197	@UNUSED_INT4
-198	1	BOOLEAN	enable object	enable object	EDITABLE	KNOWN	BLACK
+198	1	BOOLEAN	Listed in scenario editor?	enable/disable object	EDITABLE	KNOWN	BLACK
 199	@UNUSED_BOOL1
 200	@UNKNOWN_BOOL1
 201	@UNUSED_INT1
