@@ -8,7 +8,7 @@ package datmanager;
 public class Settings {
 
 	/** The editor version */
-	public static final String VERSION = "2.1.4";
+	public static final String VERSION = "2.1.5";
 	
 	/** The editor database version */
 	public static final String base_DBVersion = "2020.06.05";
