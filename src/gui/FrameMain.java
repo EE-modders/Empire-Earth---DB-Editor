@@ -49,7 +49,7 @@ public class FrameMain extends JFrame implements WindowListener {
 	/** Text fields used in the ABOUT section */
 	public static final String S_NAME = "Empire Earth - DB Editor";
 	public static final String S_VERSION = "Version: " + Settings.VERSION;
-	public static final String S_DB_VERSION = "Database version: " + Settings.DBVersion;
+	public static final String S_DB_VERSION = "Database version: " + Settings.base_DBVersion;
 	public static final String S_AUTHOR = "Created by Forlins & the EE Heaven community";
 	public static final String S_LICENSE = "GNU General Public License v3";
 	public static final String S_DELIMITER = "-------------------------------------------";

@@ -124,18 +124,18 @@
 123	@UNKNOWN_FLOAT
 124	1	BOOLEAN	Can be owned by a player	In the editor you can place this object as belonging to a player	EDITABLE	KNOWN	BLACK
 125	1	BOOLEAN	Can be owned by "World"	In the editor you can place this object as belonging to "World"	EDITABLE	KNOWN	BLACK
-126	@UNKNOWN_BOOL1
+126	1	BOOLEAN	Kill this object in order to win?	Does this object affect the end of the game?	EDITABLE	KNOWN	BLACK
 127	@UNKNOWN_BOOL1
 128	1	BOOLEAN	You can kill this object with Delete key	You can kill this object with Delete key	EDITABLE	KNOWN	BLACK
 129	@UNKNOWN_BOOL1
 130	@UNKNOWN_INT1
 131	@UNUSED_INT1
-132	4	LINK	dbgfxeffects.dat:0	Low health effect ID	Low health effect ID	EDITABLE	KNOWN	BLACK
-133	4	LINK	dbgfxeffects.dat:0	Death effect ID	Death effect ID	EDITABLE	KNOWN	BLACK
+132	4	LINK	dbgfxeffects.dat:0	Death effect ID	Death effect ID	EDITABLE	KNOWN	BLACK
+133	4	LINK	dbgfxeffects.dat:0	Low health effect ID	Low health effect ID	EDITABLE	KNOWN	BLACK
 134	4	LINK	dbgfxeffects.dat:0	Start of attack ID	Start of attack ID	EDITABLE	KNOWN	BLACK
 135	4	LINK	dbgfxeffects.dat:0	Unknown GFX effect	Unknown GFX effect	EDITABLE	UNKNOWN	BLACK
 136	4	LINK	dbgfxeffects.dat:0	Movement effect	Movement effect	EDITABLE	KNOWN	BLACK
-137	4	LINK	dbgfxeffects.dat:0	Unknown GFX effect	Unknown GFX effect	EDITABLE	UNKNOWN	BLACK
+137	4	LINK	dbgfxeffects.dat:0	Water hit effect	effect when object hits water	EDITABLE	KNOWN	BLACK
 138	4	LINK	dbgfxeffects.dat:0	Heal other effect ID	Heal other effect ID	EDITABLE	KNOWN	BLACK
 139	4	LINK	dbgfxeffects.dat:0	Unknown GFX effect	Unknown GFX effect	EDITABLE	UNKNOWN	BLACK
 140	4	LINK	dbgfxeffects.dat:0	Unknown GFX effect	Unknown GFX effect	EDITABLE	UNKNOWN	BLACK

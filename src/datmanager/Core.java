@@ -23,12 +23,13 @@ public class Core {
 	private static final String titleText = "Empire Earth - DB Editor";
 	
 	private static final String editorVersion = "v" + Settings.VERSION + "\n";
-	private static final String databaseVersion = "database version: " + Settings.DBVersion + "\n";
+	private static final String v_databaseVersion = "Vanilla database version: " + Settings.base_DBVersion + "\n";
+	private static final String aoc_databaseVersion = "AoC database version: " + Settings.AoC_DBVersion + "\n";
 	private static final String javaVersion = "java version: " + System.getProperty("java.version") + "\n";	
 	private static final String questionText = "\n" + "Vanilla or AoC?";
 	
 	
-	private static final String popupText = editorVersion + databaseVersion + javaVersion + questionText; 
+	private static final String popupText = editorVersion + v_databaseVersion + aoc_databaseVersion + javaVersion + questionText;
 	
 	/** If true, the editor is in AOC mode */
 	private static boolean AOC = false;
