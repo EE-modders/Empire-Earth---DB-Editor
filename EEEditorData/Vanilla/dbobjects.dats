@@ -15,7 +15,7 @@
 14	4	FLOAT	Acceleration/Deceleration	Acceleration/Deceleration	EDITABLE	KNOWN	BLACK
 15	4	FLOAT	Idle turning speed	Idle turning speed	EDITABLE	KNOWN	BLACK
 16	4	FLOAT	Moving turning speed	Moving turning speed	EDITABLE	KNOWN	BLACK
-17	@UNKNOWN_FLOAT
+17	4	FLOAT	Turret turning speed	Turret turning speed	EDITABLE	KNOWN	BLACK
 18	4	INTEGER	<PROBABLY> Is air unit	<PROBABLY> Is air unit	EDITABLE	KNOWN	BLACK
 19	4	INTEGER	Flight time	Flight time	EDITABLE	KNOWN	BLACK
 20	4	FLOAT	Attack angle	Attack angle	EDITABLE	KNOWN	BLACK
@@ -200,7 +200,7 @@
 199	@UNUSED_BOOL1
 200	@UNKNOWN_BOOL1
 201	@UNUSED_INT1
-202	@UNKNOWN_INT4
+202	4	INTEGER	<PROBABLY> Number of Turrets	it doesn't do a whole lot though....	EDITABLE	KNOWN	BLACK
 203	@UNKNOWN_INT4
 204	4	LINK	dbobjects.dat:0	Debris on death	Debris on death	EDITABLE	KNOWN	BLACK
 205	4	LINK	dbobjects.dat:0	Debris on death	Debris on death	EDITABLE	KNOWN	BLACK

@@ -11,7 +11,7 @@ public class Settings {
 	public static final String VERSION = "2.1.5";
 	
 	/** The editor database version */
-	public static final String base_DBVersion = "2020.06.05";
+	public static final String base_DBVersion = "2020.08.19";
 	public static final String AoC_DBVersion = "2020.06.06";
 	
 	/** Enable/disable the debug mode */
