@@ -14,6 +14,7 @@ Please tell us, when you find some unknown values.
 
 - in order to run this software, you will need to have at least Java 11 installed - **it will not start with Java 8**
   (you can test it in a terminal or cmd.exe by running `java --version`)
+- in case you don't have java 11 installed, you can get it from here: https://adoptopenjdk.net/
 - download the latest version from the [release page](https://github.com/EE-modders/Empire-Earth---DB-Editor/releases)
 - run it ;)
 
