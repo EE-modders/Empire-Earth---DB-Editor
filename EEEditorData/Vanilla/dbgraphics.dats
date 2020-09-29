@@ -63,62 +63,62 @@
 62	@STRING_SIZE
 63	0	DYNAMIC_STRING	62	Texture path	Texture path	EDITABLE	KNOWN	BLACK
 64	@STRING_SIZE
-65	0	DYNAMIC_STRING	64	Texture path	Texture path	EDITABLE	KNOWN	BLACK
+65	0	DYNAMIC_STRING	64	Shadow Texture path	Texture path for shadow	EDITABLE	KNOWN	BLACK
 66	@NAME
 67	@SEQ_NUMBER
 68	@ID
 69	@UNKNOWN_INT4
 70	@UNKNOWN_INT4
 71	@UNKNOWN_INT4
-72	@UNKNOWN_INT4
-73	@UNKNOWN_INT4
-74	@UNKNOWN_INT4
-75	@UNKNOWN_INT4
+72	4	INTEGER	Attack animation status	0: disabled	EDITABLE	KNOWN	BLACK
+73	4	INTEGER	Attack animation start frame	Attack animation end frame	EDITABLE	KNOWN	BLACK
+74	4	INTEGER	Attack animation end frame	Attack animation end frame	EDITABLE	KNOWN	BLACK
+75	4	INTEGER	<probably> Attack animation speed	Attack animation speed	EDITABLE	KNOWN	ORANGE
 76	@UNKNOWN_INT4
-77	@UNKNOWN_INT4
+77	4	INTEGER	<probably> Attack sound volume	Attack sound volume	EDITABLE	KNOWN	ORANGE
 78	@UNKNOWN_INT4
 79	@UNKNOWN_INT4
 80	@ID_SOUND
 81	@ID_SOUND
 82	@UNKNOWN_INT4
-83	@UNKNOWN_INT4
-84	@UNKNOWN_INT4
-85	@UNKNOWN_INT4
+83	4	INTEGER	<unknown> animation status	0: disabled	EDITABLE	KNOWN	BLACK
+84	4	INTEGER	<unknown> animation start frame	animation end frame	EDITABLE	KNOWN	BLACK
+85	4	INTEGER	<unknown> animation end frame	animation end frame	EDITABLE	KNOWN	BLACK
 86	@UNKNOWN_INT4
 87	@UNUSED_INT4
 88	@UNKNOWN_INT4
 89	@UNKNOWN_INT4
 90	@ID_SOUND
 91	@ID_SOUND
-92	@UNKNOWN_INT4
-93	@UNKNOWN_INT4
-94	@UNKNOWN_INT4
-95	@UNKNOWN_INT4
+92	4	INTEGER	Idle animation status	0: disabled	EDITABLE	KNOWN	BLACK
+93	4	INTEGER	Idle animation start frame	animation start frame	EDITABLE	KNOWN	BLACK
+94	4	INTEGER	Idle animation end frame	animtion end frame	KNOWN	BLACK
+95	4	INTEGER	<probably> Idle animation speed	Idle animation speed	EDITABLE	KNOWN	ORANGE
 96	@UNKNOWN_INT4
 97	@UNKNOWN_INT4
 98	@UNKNOWN_INT4
 99	@UNUSED_INT4
 100	@ID_SOUND
 101	@ID_SOUND
-102	@UNKNOWN_INT4
-103	@UNKNOWN_INT4
-104	@UNKNOWN_INT4
-105	@UNKNOWN_INT4
+102	4	INTEGER	Secondary Attack animation status	0: disabled	EDITABLE	KNOWN	BLACK
+103	4	INTEGER	Secondary Attack animation start frame	animation start frame	EDITABLE	KNOWN	BLACK
+104	4	INTEGER	Secondary Attack animation end frame	animation end frame	EDITABLE	KNOWN	BLACK
+105	4	INTEGER	<probably> Secondary Attack animation speed	animation speed	EDITABLE	KNOWN	ORANGE
 106	@UNKNOWN_INT4
 107	@UNKNOWN_INT4
 108	@UNKNOWN_INT4
 109	@UNUSED_INT4
 110	@ID_SOUND
 111	@ID_SOUND
-112	@UNKNOWN_INT4
-113	@UNKNOWN_INT4
-114	@UNKNOWN_INT4
-115	@UNKNOWN_INT4
+112	4	INTEGER	Death animation status	0: disabled	EDITABLE	KNOWN	BLACK
+113	4	INTEGER	Death animation start frame	animation start frame	EDITABLE	KNOWN	BLACK
+114	4	INTEGER	Death animation end frame	animation end frame	EDITABLE	KNOWN	BLACK
+115	4	INTEGER	<probably>Death animation speed	Death animation speed	EDITABLE	KNOWN	ORANGE
 116	@UNKNOWN_INT4
 117	@UNUSED_INT4
-118	@UNKNOWN_INT4
-119	@UNKNOWN_INT4
-120	@UNKNOWN_INT4
+118	4	INTEGER	<unknown> animation status	0: disabled	EDITABLE	KNOWN	BLACK
+119	4	INTEGER	<unknown> animation start frame	animation end frame	EDITABLE	KNOWN	BLACK
+120	4	INTEGER	<unknown> animation end frame	animation start frame	EDITABLE	KNOWN	BLACK
 121	@UNKNOWN_INT4
 122	@UNKNOWN_INT4
 123	@UNKNOWN_INT4
@@ -132,10 +132,10 @@
 131	@UNUSED_INT4
 132	@ID_SOUND
 133	@ID_SOUND
-134	@UNKNOWN_INT4
-135	@UNKNOWN_INT4
-136	@UNKNOWN_INT4
-137	@UNKNOWN_INT4
+134	4	INTEGER	Idle animation 3 status	0: disabled	EDITABLE	KNOWN	BLACK
+135	4	INTEGER	Idle animation 3 start frame	animation start frame	EDITABLE	KNOWN	BLACK
+136	4	INTEGER	Idle animation 3 end frame	animation end frame	EDITABLE	KNOWN	BLACK
+137	4	INTEGER	<probabl> Idle animation 3 speed	Second idle animation speed	EDITABLE	KNOWN	ORANGE
 138	@UNKNOWN_INT4
 139	@UNKNOWN_INT4
 140	@UNKNOWN_INT4
