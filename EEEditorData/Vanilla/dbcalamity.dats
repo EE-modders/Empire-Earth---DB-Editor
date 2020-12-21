@@ -38,4 +38,4 @@
 37	4	INTEGER	Calamity cost	Calamity cost	EDITABLE	KNOWN	BLACK
 38	@ID_UNIT_SET
 39	@ID_LANGUAGE
-40	@UNKNOWN_INT4
+40	4	BOOLEAN	Is spawnable	can be spawned by unit like prophet	EDITABLE	KNOWN	BLACK
