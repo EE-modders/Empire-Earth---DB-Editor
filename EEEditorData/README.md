@@ -33,7 +33,7 @@
 
 ### Types:
 
-| Name           | Descrption                                                                                                      |
+| Name           | Description                                                                                                     |
 |:--------------:| --------------------------------------------------------------------------------------------------------------- |
 | BOOLEAN        | 1 or 4 bytes (not sure about 4 bytes, but it seems so for now...)                                               |
 | INTEGER        | 1 or 4 bytes integer value                                                                                      |
