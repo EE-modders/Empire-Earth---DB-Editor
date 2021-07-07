@@ -4,5 +4,6 @@
 /EE_AoC_db
 
 *.directory
+*.idea
 *.zip
 *.lnk
