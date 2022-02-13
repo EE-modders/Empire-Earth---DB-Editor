@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
+import datmanager.Core;
 import datmanager.Settings;
 import datmanager.Util;
 import gui.components.JImagePanel;
@@ -22,11 +23,12 @@ public class EESplashScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final BufferedImage image = Util.readBufferedImage(EESplashScreen.class.getResource("EE_SplashScreen.jpg"));
-	private static final ImageIcon IMAGE_ICON = new ImageIcon(GUI.class.getResource("EE_Icon.png"));
+	private static final BufferedImage image = Util.readBufferedImage(GUI.class.getResource("DBE_icon.png"));
+	private static final ImageIcon IMAGE_ICON = new ImageIcon(GUI.class.getResource("DBE_icon.png"));
 
-	JImagePanel imagePanel = new JImagePanel(image);
-	private final JLabel labelVersion = new JLabel("");
+	private final JImagePanel imagePanel = new JImagePanel(image);
+	private final JLabel labelVersion = new JLabel(" Version: "+Settings.VERSION);
+	private final JLabel imageCredit = new JLabel("Icon created by Fortuking ");
 
 	/**
 	 * Creates a new {@link EESplashScreen}
@@ -36,8 +38,10 @@ public class EESplashScreen extends JFrame {
 	}
 
 	private void initGUI() {
-		setTitle("Empire Earth - DB Editor");
-		setIconImage(IMAGE_ICON.getImage());
+		setTitle(Core.titleText);
+		if (IMAGE_ICON != null)
+			setIconImage(IMAGE_ICON.getImage());
+
 		imagePanel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		setContentPane(imagePanel);
 
@@ -50,9 +54,10 @@ public class EESplashScreen extends JFrame {
 		setUndecorated(true);
 
 		imagePanel.setLayout(new BorderLayout(0, 0));
-		labelVersion.setHorizontalAlignment(SwingConstants.RIGHT);
-		imagePanel.add(labelVersion, BorderLayout.SOUTH);
-		labelVersion.setText("Version: " + Settings.VERSION + ' ');
-	}
+		imagePanel.add(labelVersion, BorderLayout.NORTH);
+		imagePanel.add(imageCredit, BorderLayout.SOUTH);
 
+		labelVersion.setHorizontalAlignment(SwingConstants.LEFT);
+		imageCredit.setHorizontalAlignment(SwingConstants.RIGHT);
+	}
 }
