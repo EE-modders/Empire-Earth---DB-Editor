@@ -1,14 +1,16 @@
 package datmanager;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.util.Collections;
-import java.util.Map;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Scanner;
-import java.util.Vector;
 import java.util.stream.Collectors;
 
 import javax.swing.JOptionPane;
+import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
 
 import gui.GUI;
 
@@ -24,57 +26,65 @@ public class Language implements Comparable<Language> {
 	private static Vector<Language> LIST = new Vector<>(0);
 
 	/** Map every language code to the relative language entry */
-	private static Map<Integer, Language> MAP = Collections.emptyMap();
-
+	private static Map<Integer, Language> MAP = new HashMap<>();
 
 
 	/** Language ID */
-	public final int ID;
+	private final int ID;
 
 	/** Language text */
-	public final String text;
+	private final String text;
 
-	static {
-		updateLanguages();
-	}
 
 	public static void updateLanguages() {
-		final File languageFile = new File(Core.getDataDirectory(), "language.txt");
-		if (languageFile.exists() && languageFile.canRead()) {
+		var languageFile = new File(Core.getDataDirectory(), "language.txt");
+
+		try (var input = new BufferedReader(new FileReader(languageFile))) {
+			String line;
+			Language l;
 			LIST.clear();
-			try (Scanner scanner = new Scanner(languageFile)) {
-				while (scanner.hasNextLine()) {
-					final var line = scanner.nextLine();
-					if (line != null && line.length() > 0) {
-						LIST.add(new Language(line));
-					}
-				}
-				MAP = LIST.stream().collect(Collectors.toMap(l -> l.ID, l -> l));
-			} catch (final Exception e) {
-				JOptionPane.showMessageDialog(null, "An error occurred while reading the language file", "Language file", JOptionPane.WARNING_MESSAGE, GUI.IMAGE_ICON);
-				Util.printException(null, e, true);
+
+			while ( (line = input.readLine()) != null ) {
+				l = Language.parseNew(line);
+				LIST.add(l);
+				MAP.put(l.getID(), l);
 			}
+
+		} catch (IOException | ParseException e) {
+			JOptionPane.showMessageDialog(null,
+					"An error occurred while reading the language file", "Language file",
+					JOptionPane.WARNING_MESSAGE, GUI.IMAGE_ICON);
+			Util.printException(null, e, true);
 		}
+	}
+
+	/**
+	 * Creates a new {@link Language} class from a line String (usually from "language.txt") separated by a comma
+	 *
+	 * @param line single line from "language.txt"
+	 * @return {@link Language}
+	 * @throws ParseException
+	 */
+
+	private static Language parseNew(String line) throws ParseException {
+		String[] parts = line.split(",");
+
+		if (parts.length < 2)
+			throw new ParseException("Invalid language entry: \""+line+"\"", parts.length);
+
+		int id = Integer.parseInt(parts[0]);
+
+		// NOTE: this is not perfect, because of '\"' in the string, but good enough
+		String text = parts[1].replace("\"", "").strip();
+
+		//System.out.println("ID: "+id+" Text: "+text);
+
+		return new Language(id, text);
 	}
 
 	public static Vector<Language> getList() { return LIST; }
 
 	public static Map<Integer, Language> getMap() { return MAP; }
-
-
-
-
-
-	/**
-	 * Create a new language entry with the given raw text read from the file.
-	 *
-	 * @param entry The raw text
-	 */
-	public Language(String entry) {
-		final int indexID = entry.indexOf(',');
-		ID = Integer.valueOf(entry.substring(0, indexID));
-		text = entry.substring(indexID + 3, entry.length() - 1);
-	}
 
 	/**
 	 * Create a new language entry with the given code and text
@@ -88,7 +98,7 @@ public class Language implements Comparable<Language> {
 	}
 
 	/**
-	 * Create a new language entyr with the given entry (ID, text)
+	 * Create a new language entry with the given entry (ID, text)
 	 *
 	 * @param entry The entry (ID, text)
 	 */
@@ -97,9 +107,17 @@ public class Language implements Comparable<Language> {
 		text = entry.getValue();
 	}
 
+	public int getID() {
+		return ID;
+	}
+
+	public String getText() {
+		return text;
+	}
+
 	@Override
-	public int compareTo(Language o) {
-		return Integer.compare(ID, o.ID);
+	public int compareTo(Language l) {
+		return Integer.compare(ID, l.ID);
 	}
 
 	@Override

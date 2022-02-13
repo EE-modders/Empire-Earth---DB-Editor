@@ -309,14 +309,14 @@ public class Entry implements Comparable<Entry>, Iterable<Object>, LocalizedObje
 					if (objLanguageId > 0) {
 						final var language = Language.getMap().get(objLanguageId);
 						if (language != null) {
-							return "(" + getID() + ") " + language.text;
+							return "(" + getID() + ") " + language.getText();
 						}
 					}
 				}
 			} else if (languageId >= 0) {
 				final var language = Language.getMap().get(languageId);
 				if (language != null) {
-					return "(" + getID() + ") " + language.text;
+					return "(" + getID() + ") " + language.getText();
 				}
 			}
 		}

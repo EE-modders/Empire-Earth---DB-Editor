@@ -140,7 +140,7 @@ public class ConditionOperator implements Condition {
 				final FloatPredicate numberTester = getNumericCheck(operator, (String) value);
 				switch (type) {
 					case LANGUAGE:
-						return (Entry entry) -> numberTester.test(((Language) entry.get(index)).ID);
+						return (Entry entry) -> numberTester.test(((Language) entry.get(index)).getID());
 					case FLOAT:
 						return (Entry entry) -> numberTester.test(((Float) entry.get(index)).floatValue());
 					case RANGE:
@@ -169,7 +169,7 @@ public class ConditionOperator implements Condition {
 			} else if (val instanceof Link) {
 				return numericTester.test(((Link) val).target.getID());
 			} else if (val instanceof Language) {
-				return numericTester.test(((Language) val).ID);
+				return numericTester.test(((Language) val).getID());
 			}
 			return false;
 		});

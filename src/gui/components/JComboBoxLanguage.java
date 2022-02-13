@@ -29,10 +29,10 @@ public class JComboBoxLanguage extends JComboBox<Language> implements EntryField
 
 	private static final long serialVersionUID = -5787229930995728192L;
 
-	private static final BiPredicate<String, Language> NAME_MATCHER = (text, lang) -> lang.text.toLowerCase().contains(text);
+	private static final BiPredicate<String, Language> NAME_MATCHER = (text, lang) -> lang.getText().toLowerCase().contains(text);
 	private static final BiPredicate<Integer, Language> ID_MATCHER = (val, lang) -> {
 		final String text = val.toString();
-		return Integer.toString(lang.ID).contains(text) || NAME_MATCHER.test(text, lang);
+		return Integer.toString(lang.getID()).contains(text) || NAME_MATCHER.test(text, lang);
 	};
 
 	private final ListSearcher<Language> searcher = new ListSearcher<>(NAME_MATCHER, ID_MATCHER);
@@ -86,7 +86,7 @@ public class JComboBoxLanguage extends JComboBox<Language> implements EntryField
 		}
 		if (obj != null) {
 			if (obj instanceof Language) {
-				return ((Language) obj).ID;
+				return ((Language) obj).getID();
 			} else if (obj instanceof String) {
 				return Integer.valueOf((String) obj);
 			} else if (obj instanceof Integer) {

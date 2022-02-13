@@ -44,13 +44,13 @@ public class CPBehavior extends DatStructure {
 	@Override
 	public String getCustomEntryName(int index, List<Object> values) {
 		final Language l = Language.getMap().get(28000 + index);
-		return l != null ? l.text : "<Undefined>";
+		return l != null ? l.getText() : "<Undefined>";
 	}
 
 	@Override
 	public String getEntryDescription(Entry entry) {
 		final Language l = Language.getMap().get(28500 + entry.getID());
-		return l != null ? l.text : "";
+		return l != null ? l.getText() : "";
 	}
 
 }
