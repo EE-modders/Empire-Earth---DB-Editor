@@ -21,12 +21,14 @@
             <version>11.0.2</version>
             <scope>compile</scope>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>11.0.2</version>
             <scope>compile</scope>
         </dependency>
+        -->
 
         <!-- needed to create cross platform JAR file -->
         <dependency>
@@ -68,12 +70,14 @@
             <scope>compile</scope>
         </dependency>
         -->
+        <!--
         <dependency>
             <groupId>org.controlsfx</groupId>
             <artifactId>controlsfx</artifactId>
             <version>11.1.1</version>
             <scope>compile</scope>
         </dependency>
+        -->
 
     </dependencies>
 

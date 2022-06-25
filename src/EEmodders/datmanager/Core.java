@@ -1,6 +1,7 @@
 package EEmodders.datmanager;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 
 import javax.swing.JOptionPane;
@@ -8,13 +9,18 @@ import javax.swing.JOptionPane;
 import EEmodders.datstructure.DatStructure;
 import EEmodders.gui.EESplashScreen;
 import EEmodders.gui.FrameMain;
+import javafx.application.Application;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 
 /**
  * Core class. Contains the method main, the main data loaded by the program and some useful methods
  *
  * @author MarcoForlini
  */
-public class Core {
+public class Core extends Application {
 
 	public static final String titleText = "Empire Earth - DB Editor";
 	private static final String[] editorModeChoices = new String[] { "EE Classic", "Art of Conquest", "Exit" };
@@ -40,6 +46,10 @@ public class Core {
 	public static boolean isAOC() { return AOC; }
 
 	public static void main(String[] args) {
+		launch(args);
+	}
+	@Override
+	public void start(Stage stage) throws IOException {
 		final EESplashScreen splashScreen = new EESplashScreen();
 		splashScreen.setVisible(true);
 
@@ -51,6 +61,7 @@ public class Core {
 					"Warning", JOptionPane.WARNING_MESSAGE);
 		}
 
+		/*
 		switch (JOptionPane.showOptionDialog(splashScreen, popupText, titleText, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, editorModeChoices, editorModeChoices[0])) {
 			case 0:
 				AOC = false;
@@ -63,6 +74,32 @@ public class Core {
 				System.exit(0);
 				break;
 		}
+		*/
+
+		////
+
+		var question = new Alert(Alert.AlertType.CONFIRMATION);
+		question.setTitle(titleText);
+		question.setHeaderText("HEADER");
+		question.setContentText(popupText);
+
+		var btnEEC = new ButtonType("EEC");
+		var btnAOC = new ButtonType("AOC");
+		var btnExit = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+		question.getButtonTypes().setAll(btnEEC, btnAOC, btnExit);
+
+		var result = question.showAndWait();
+
+		if (result.get() != btnExit) {
+			AOC = result.get() == btnAOC;
+		} else {
+			System.exit(0);
+		}
+
+		//
+
+		System.out.println("AOC: "+AOC);
 
 		final var languageThread = new Thread(Language::updateLanguages); // This makes the Language class initialize in background... SSSHHH!!!
 		final var datStructuresThread = new Thread(DatStructure::initAllStructures);
