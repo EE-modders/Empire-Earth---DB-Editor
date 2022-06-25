@@ -1,8 +1,6 @@
 package datmanager;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
