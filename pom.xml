@@ -6,7 +6,7 @@
 
     <groupId>EEmodders</groupId>
     <artifactId>DBEditor</artifactId>
-    <version>1.0</version>
+    <version>2.1.5</version>
     <name>Empire Earth - DB Editor</name>
 
     <properties>
@@ -21,14 +21,12 @@
             <version>11.0.2</version>
             <scope>compile</scope>
         </dependency>
-        <!--
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>11.0.2</version>
             <scope>compile</scope>
         </dependency>
-        -->
 
         <!-- needed to create cross platform JAR file -->
         <dependency>
@@ -45,6 +43,7 @@
             <classifier>win</classifier>
             <scope>compile</scope>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
@@ -52,6 +51,7 @@
             <classifier>mac</classifier>
             <scope>compile</scope>
         </dependency>
+        -->
         <!-- -->
 
         <!--
