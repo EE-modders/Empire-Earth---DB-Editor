@@ -9,6 +9,7 @@ public class Settings {
 
 	/** The editor version */
 	public static final String VERSION = "2.1.5";
+	public static final String VERSION_YEAR = "2016 - 2022";
 	
 	/** The editor database version */
 	public static final String base_DBVersion = "2020.12.21";
