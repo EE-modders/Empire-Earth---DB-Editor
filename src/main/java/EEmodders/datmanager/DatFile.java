@@ -192,6 +192,10 @@ public class DatFile extends File implements Iterable<EntryGroup> {
 		return "DatContent: " + super.toString();
 	}
 
+	public String getPrettyName() {
+		return datStructure.name;
+	}
+
 	/**
 	 * Check the file unsaved state
 	 *

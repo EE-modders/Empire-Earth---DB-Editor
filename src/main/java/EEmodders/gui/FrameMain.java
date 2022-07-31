@@ -36,6 +36,7 @@ import EEmodders.gui.components.JScrollPaneRed;
 import EEmodders.gui.misc.EEScrollBarUI;
 import EEmodders.gui.misc.GridBagConstraintsExtended;
 import EEmodders.gui.misc.GridBagLayoutExtended;
+import javafx.scene.control.Alert;
 
 /**
  * The main window
@@ -57,7 +58,7 @@ public class FrameMain extends JFrame implements WindowListener {
 	/** Text used in the ABOUT dialog */
 	public static final String S_ABOUT = String.join("\n", S_NAME, S_VERSION, S_DB_VERSION, S_DELIMITER, S_AUTHOR, S_LICENSE);
 
-	/** Singletone intance of FrameMain */
+	/** Singleton instance of FrameMain */
 	public static final FrameMain instance = new FrameMain();
 
 	/** After the first load, the load dialog won't enable anymore all files by default */
@@ -76,7 +77,7 @@ public class FrameMain extends JFrame implements WindowListener {
 		dbLoad = new JButtonRed("Load dat files");
 		final JButton dbInfo = new JButtonRed("About");
 		final JButton dbExit = new JButtonRed("Exit");
-		dbLoad.addActionListener(this::loadFiles);
+		//dbLoad.addActionListener(this::loadFiles);
 		dbInfo.addActionListener(evt -> JOptionPane.showMessageDialog(this, S_ABOUT, "About", JOptionPane.INFORMATION_MESSAGE, GUI.IMAGE_EE_HEAVEN_LOGO));
 		dbExit.addActionListener(evt -> System.exit((0)));
 
@@ -116,43 +117,39 @@ public class FrameMain extends JFrame implements WindowListener {
 		addWindowListener(this);
 	}
 
-	private List<DatFile> getFilesInDirectory() {
-		File lastDirectory = null;
-		List<DatFile> allFiles;
-		do {
-			final File selectedDirectory = Util.selectDBDirectory(this, lastDirectory);
-			if (selectedDirectory == null) {
-				return null;
-			}
-			allFiles = Arrays.stream(DatStructure.GetLoadedStructures()).map(datStructure -> new DatFile(selectedDirectory, datStructure)).filter(DatFile::exists).collect(Collectors.toList());
-
-			if (!allFiles.isEmpty()) {
-				break;
-			}
-
-			JOptionPane.showMessageDialog(this, "There's no dat file in this directory!", "Error", JOptionPane.ERROR_MESSAGE, GUI.IMAGE_ICON);
-			lastDirectory = selectedDirectory;
-		} while (true);
-
-		final DialogSelectFiles frameFiles = new DialogSelectFiles(this, allFiles, firstLoad);
-		final List<DatFile> selectedFiles = frameFiles.getFilesToLoad();
-		if (selectedFiles == null || selectedFiles.isEmpty()) {
-			return null;
-		}
-		return selectedFiles;
-	}
-
 	/**
-	 * Load all selected files
+	 * Load all selected files from given directory
 	 *
-	 * @param evt The action event
+	 * @param directory directory to load dat files from
 	 */
-	public void loadFiles(ActionEvent evt) {
-		final List<DatFile> files = getFilesInDirectory();
+	public void loadFiles(File directory) {
+		final List<DatFile> files = getDatFilesFromDirectory(directory);
 		if (files != null) {
 			setEnabled(false);
-			new Thread(() -> loadFilesThread(files, this::onLoadSucceed, this::onLoadFail)).start();
+			//new Thread(() -> loadFilesThread(files, this::onLoadSucceed, this::onLoadFail)).start();
+			loadFilesThread(files, this::onLoadSucceed, this::onLoadFail);
 		}
+	}
+
+	private List<DatFile> getDatFilesFromDirectory(final File directory) {
+		List<DatFile> allFiles;
+
+		allFiles = Arrays.stream(DatStructure.GetLoadedStructures())
+				.map(datStructure -> new DatFile(directory, datStructure))
+				.filter(DatFile::exists)
+				.collect(Collectors.toList());
+
+		if (allFiles.isEmpty()) {
+			var alert = new Alert(Alert.AlertType.ERROR);
+			Util.setAlertIcon(alert);
+			alert.setTitle("Error");
+			alert.setHeaderText("There are no valid .dat files in the selected directory!");
+			alert.setContentText("Selected directory: "+directory);
+			alert.showAndWait();
+			return null;
+		}
+
+		return allFiles;
 	}
 
 	/**
@@ -195,7 +192,7 @@ public class FrameMain extends JFrame implements WindowListener {
 		}
 
 		final var filesLoaded = threads.stream().filter(LoadThread::isCompleted).map(LoadThread::getDatFile).collect(Collectors.toList());
-		if (filesLoaded.size() >= 0) {
+		if (filesLoaded.size() > 0) {
 			onLoadSucceed.accept(filesLoaded);
 		}
 		setEnabled(true);
@@ -231,10 +228,21 @@ public class FrameMain extends JFrame implements WindowListener {
 		} while (true);
 	}
 
+	private void generateSeletor(Collection<DatFile> loaded) {
+		DatFile.LOADED.addAll(loaded);
+
+		List<DatFile> loadedDBs = DatFile.LOADED.stream().sorted().collect(Collectors.toList());
+
+		Core.getDbSelectorController().setDBButtons(loadedDBs);
+	}
 	private void onLoadSucceed(Collection<DatFile> loaded) {
+		// test
+		generateSeletor(loaded);
+		//
+
 		dbLoad.setVisible(false);
 
-		DatFile.LOADED.addAll(loaded);
+		//DatFile.LOADED.addAll(loaded);
 		DatFile.LOADED.forEach(DatFile::buildLinks);
 		DatFile.LOADED.forEach(df -> df.dummyEntryGroup.sort(null));
 

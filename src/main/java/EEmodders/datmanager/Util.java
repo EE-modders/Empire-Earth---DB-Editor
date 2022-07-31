@@ -2,19 +2,13 @@ package EEmodders.datmanager;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.math.RoundingMode;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 import java.util.List;
-import java.util.Locale;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -22,7 +16,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import EEmodders.gui.GUI;
 import EEmodders.gui.components.JScrollPaneRed;
+import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
 
 public final class Util {
 
@@ -63,6 +62,27 @@ public final class Util {
 		return null;
 	}
 
+	public static void setAlertIcon(Alert alert) {
+		var alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+		alertStage.getIcons().add(getDBEditorIcon());
+	}
+
+	public static File getDBDirectory(File startingDir) {
+		var dirChooser = new DirectoryChooser();
+
+		if (startingDir != null && startingDir.exists())
+			dirChooser.setInitialDirectory(startingDir);
+
+		dirChooser.setTitle("Select the folder which contains the EE dat files");
+
+		File dbDir = dirChooser.showDialog(Core.getStage());
+
+		return dbDir;
+	}
+
+	public static Image getDBEditorIcon() {
+		return new Image(Objects.requireNonNull(GUI.class.getResource("DBE_icon.png")).toString());
+	}
 	public static boolean isInteger(String text) {
 		try {
 			Integer.parseInt(text, 10);
