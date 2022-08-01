@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootElement" prefHeight="473.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EEmodders.gui.scenes.DBSelectorController">
+<AnchorPane prefHeight="473.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EEmodders.gui.scenes.DBSelectorController">
    <children>
       <BorderPane fx:id="borderPane" prefHeight="336.0" prefWidth="451.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
@@ -34,7 +34,7 @@
             </Button>
          </center>
          <top>
-            <StackPane fx:id="dbLogo" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="332.0" fitWidth="394.0" pickOnBounds="true" preserveRatio="true">
                      <image>

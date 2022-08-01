@@ -6,7 +6,6 @@ import EEmodders.gui.FrameMain;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,8 +19,7 @@ import java.util.List;
 
 public class DBSelectorController {
 
-    @FXML private AnchorPane rootElement;
-    @FXML private StackPane dbLogo;
+    @FXML private Button loadDBButton;
     @FXML private BorderPane borderPane;
     @FXML private Label versionLabel;
 
@@ -50,6 +48,10 @@ public class DBSelectorController {
 
     public void setVersionLabel(String version) {
         versionLabel.setText("Version: v"+version);
+    }
+
+    public void setLoadDBButton(String string) {
+        loadDBButton.setText(string);
     }
 
     public void setDBButtons(List<DatFile> fileList) {

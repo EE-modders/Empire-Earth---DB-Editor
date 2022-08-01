@@ -96,6 +96,7 @@ public class Core extends Application {
 
 		DBSelectorController controller = fxmlLoader.getController();
 		dbSelectorController = controller;
+		controller.setLoadDBButton("Select DAT folder for "+(AOC ? "AOC" : "EEC"));
 		controller.setVersionLabel(Settings.VERSION);
 
 		stage.setTitle(titleText);
