@@ -154,37 +154,4 @@ public class Core extends Application {
 
 		return Integer.parseInt(version) >= 11;
 	}
-
-	/*
-	// Some Windows bullshit nobody cares about
-	private static void readGameFolder() {
-		if (System.getProperty("os.name").equalsIgnoreCase("Linux")) {
-			// There is no registry on Linux, so just ignore
-			System.out.println("Linux found, ignoring registry lookup.");
-			return;
-		}
-		final String location = AOC ? "HKCU\\Software\\Mad Doc Software\\EE-AOC" : "HKCU\\Software\\SSSI\\Empire Earth";
-		try {
-			final Process processVolume = readRegistry(location, "Installed From Volume");
-			final Process processDirectory = readRegistry(location, "Installed From Directory");
-			processVolume.waitFor();
-			processDirectory.waitFor();
-
-			try (Scanner volumeScanner = new Scanner(processVolume.getInputStream());
-				 Scanner directoryScanner = new Scanner(processDirectory.getInputStream())) {
-				final var volume = volumeScanner.tokens().collect(Collectors.joining(" "));
-				final var directory = directoryScanner.tokens().collect(Collectors.joining(" "));
-
-				gameDirectory = volume.substring(volume.indexOf("REG_SZ") + 6).strip() + directory.substring(directory.indexOf("REG_SZ") + 6).strip();
-				System.out.println("Found game base directory: " + gameDirectory);
-			}
-		} catch (final IOException | InterruptedException e) {
-			System.out.println("Could not find game base directory using registry.");
-		}
-	}
-
-	private static Process readRegistry(String location, String key) throws IOException {
-		return Runtime.getRuntime().exec("reg query \"" + location + "\" /v \"" + key + "\"");
-	}
-	 */
 }
