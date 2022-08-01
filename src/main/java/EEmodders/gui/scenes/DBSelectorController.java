@@ -2,8 +2,7 @@ package EEmodders.gui.scenes;
 
 import EEmodders.datmanager.Core;
 import EEmodders.datmanager.DatFile;
-import EEmodders.gui.FrameMain;
-import javafx.application.Platform;
+import EEmodders.gui.MainFrame;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -22,6 +21,7 @@ public class DBSelectorController {
     @FXML private Button loadDBButton;
     @FXML private BorderPane borderPane;
     @FXML private Label versionLabel;
+    @FXML private Label creditLabel;
 
     @FXML
     private void selectFolder() {
@@ -32,22 +32,25 @@ public class DBSelectorController {
         File binDir = dirChooser.showDialog(Core.getStage());
 
         if (binDir != null && binDir.isDirectory())
-            FrameMain.instance.loadFiles(binDir);
+            MainFrame.instance.loadFiles(binDir);
     }
 
     @FXML
     private void showAbout() {
-        Core.showInfo();
+        Core.showAbout();
     }
 
     @FXML
-    private void exit() {
-        Platform.exit();
-        System.exit(0);
+    public void exit() {
+        Core.exit();
     }
 
     public void setVersionLabel(String version) {
         versionLabel.setText("Version: v"+version);
+    }
+
+    public void setCreditLabel(String string) {
+        creditLabel.setText(string);
     }
 
     public void setLoadDBButton(String string) {
@@ -72,7 +75,7 @@ public class DBSelectorController {
             var eventHandler = new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    datfile.openInEditor(FrameMain.instance, false);
+                    datfile.openInEditor(MainFrame.instance, false);
                 }
             };
             btn.setOnMouseClicked(eventHandler);

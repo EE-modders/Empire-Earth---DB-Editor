@@ -2,17 +2,16 @@ package EEmodders.datmanager;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.nio.file.Paths;
-import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import javax.swing.JOptionPane;
 
 import EEmodders.datstructure.DatStructure;
-import EEmodders.gui.EESplashScreen;
-import EEmodders.gui.FrameMain;
+import EEmodders.gui.MainFrame;
 import EEmodders.gui.scenes.DBSelectorController;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -27,9 +26,6 @@ import javafx.stage.Stage;
  * @author MarcoForlini
  */
 public class Core extends Application {
-
-	public static final String titleText = "Empire Earth - DB Editor";
-	
 	private static final String editorVersion = "DB Editor: \t\t\t" + Settings.VERSION + "\n";
 	private static final String v_databaseVersion = "EEC database version: \t" + Settings.base_DBVersion + "\n";
 	private static final String aoc_databaseVersion = "AoC database version: \t" + Settings.AoC_DBVersion + "\n";
@@ -53,12 +49,13 @@ public class Core extends Application {
 	public static boolean isAOC() { return AOC; }
 	public static Stage getStage() { return stage; }
 	public static DBSelectorController getDbSelectorController() { return dbSelectorController; }
+
 	@Override
 	public void start(Stage stage) throws IOException {
 		Core.stage = stage;
 
-		final var splashScreen = new EESplashScreen();
-		//splashScreen.setVisible(true);
+		final var splashScreen = MainFrame.instance;
+		splashScreen.initGUI();
 
 		if (!supportedJava()) {
 			JOptionPane.showMessageDialog(splashScreen,
@@ -71,7 +68,8 @@ public class Core extends Application {
 		versionSelector();
 		dbSelector();
 
-		final var languageThread = new Thread(Language::updateLanguages); // This makes the Language class initialize in background... SSSHHH!!!
+		// This makes the Language class initialize in background... SSSHHH!!!
+		final var languageThread = new Thread(Language::updateLanguages);
 		final var datStructuresThread = new Thread(DatStructure::initAllStructures);
 
 		languageThread.start();
@@ -85,29 +83,30 @@ public class Core extends Application {
 			System.exit(0);
 		}
 
-		//splashScreen.setVisible(false);
-		//FrameMain.instance.setVisible(true);
-
+		splashScreen.setVisible(false);
 	}
 
 	private void dbSelector() throws IOException {
-		var fxmlLoader = new FXMLLoader(DBSelectorController.class.getResource("dbSelector.fxml"));
-		var scene = new Scene(fxmlLoader.load());
+		final var fxmlLoader = new FXMLLoader(DBSelectorController.class.getResource("dbSelector.fxml"));
+		final var scene = new Scene(fxmlLoader.load());
+		final var aoc = (AOC ? "AOC" : "EEC");
 
 		DBSelectorController controller = fxmlLoader.getController();
 		dbSelectorController = controller;
-		controller.setLoadDBButton("Select DAT folder for "+(AOC ? "AOC" : "EEC"));
+		controller.setLoadDBButton("Select DAT folder for "+aoc);
 		controller.setVersionLabel(Settings.VERSION);
+		controller.setCreditLabel(Settings.DB_ICON_CREDIT+" (King rocks balls!!)");
 
-		stage.setTitle(titleText);
+		stage.setTitle(Settings.NAME +" ("+aoc+")");
 		stage.getIcons().add(Util.getDBEditorIcon());
 		stage.setScene(scene);
 		stage.show();
 	}
+
 	private void versionSelector() {
 		var question = new Alert(Alert.AlertType.CONFIRMATION);
 		Util.setAlertIcon(question);
-		question.setTitle(titleText);
+		question.setTitle(Settings.NAME);
 		question.setHeaderText("EE Classic or EE AoC?");
 
 		var btnEEC = new ButtonType("EE Classic");
@@ -121,12 +120,13 @@ public class Core extends Application {
 		if (result.get() != btnExit) {
 			AOC = result.get() == btnAOC;
 		} else {
-			System.exit(0);
+			Core.exit();
 		}
 	}
 
-	public static void showInfo() {
+	public static void showAbout() {
 		var popup = new Alert(Alert.AlertType.INFORMATION);
+		popup.getDialogPane().setMinSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
 		Util.setAlertIcon(popup);
 		popup.setTitle("About");
 		popup.setHeaderText("Version Information");
@@ -137,8 +137,6 @@ public class Core extends Application {
 				+ "Published under GPLv3 " + Settings.VERSION_YEAR;
 
 		popup.setContentText(about);
-
-		popup.getDialogPane().setMinSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
 		popup.showAndWait();
 	}
 
@@ -153,5 +151,49 @@ public class Core extends Application {
 		}
 
 		return Integer.parseInt(version) >= 11;
+	}
+
+	public static boolean checkUnsaved() {
+		final var unsaved = DatFile.LOADED.stream()
+				.filter(DatFile::isLoaded).filter(DatFile::isUnsaved)
+				.collect(Collectors.toSet());
+
+		if (unsaved.isEmpty())
+			return true;
+
+		var confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+		Util.setAlertIcon(confirmDialog);
+		confirmDialog.setTitle(Settings.NAME);
+		confirmDialog.setHeaderText("There are unsaved changes. Do you want to save all unsaved files?");
+
+		var btnSave = new ButtonType("Save", ButtonBar.ButtonData.YES);
+		var btnUnsave = new ButtonType("Don't save", ButtonBar.ButtonData.NO);
+		var btnCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+		confirmDialog.getButtonTypes().setAll(btnSave, btnUnsave, btnCancel);
+
+		var result = confirmDialog.showAndWait();
+		var choice = result.get();
+
+		if (choice == btnSave)
+			unsaved.forEach(datfile -> datfile.saveFile(MainFrame.instance));
+		else if (choice == btnCancel)
+			return false;
+
+		return true;
+	}
+
+	public static void exit() {
+		if (!Core.checkUnsaved())
+			return;
+
+		Platform.exit();
+		System.exit(0);
+	}
+
+	@Override
+	public void stop() throws Exception {
+		super.stop();
+		Core.exit();
 	}
 }

@@ -52,7 +52,7 @@ import EEmodders.datstructure.structures.UnitSet;
 import EEmodders.datstructure.structures.Upgrade;
 import EEmodders.datstructure.structures.WeaponToHit;
 import EEmodders.datstructure.structures.World;
-import EEmodders.gui.FrameMain;
+import EEmodders.gui.MainFrame;
 
 /**
  * Represents the structure of the entries of a file
@@ -108,7 +108,7 @@ public abstract class DatStructure {
 			final var commonFieldsReader = new DatStructureReader(new File(Core.getDataDirectory(), "common.dats"), datStructureMap);
 			commonFieldsMap = commonFieldsReader.toMap();
 		} catch (final IOException exc) {
-			Util.printException(FrameMain.instance, exc, true);
+			Util.printException(MainFrame.instance, exc, true);
 			return;
 		}
 
@@ -116,7 +116,7 @@ public abstract class DatStructure {
 			try {
 				datStructure.initialize(datStructureMap);
 			} catch (final IOException exc) {
-				Util.printException(FrameMain.instance, exc, true);
+				Util.printException(MainFrame.instance, exc, true);
 				continue;
 			}
 		}

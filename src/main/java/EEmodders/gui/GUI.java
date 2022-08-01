@@ -22,7 +22,7 @@ public class GUI {
 	/** Icon used in the top-left corner in all frames/dialog */
 	public static final ImageIcon	IMAGE_ICON				= new ImageIcon (GUI.class.getResource (Core.isAOC () ? "EE_Icon_AOC.png" : "EE_Icon.png"));
 
-	/** EE logo used in the frame {@code FrameMain} */
+	/** EE logo used in the frame */
 	public static final ImageIcon	IMAGE_LOGO				= new ImageIcon (GUI.class.getResource (Core.isAOC () ? "EE_Logo_AOC.png" : "EE_Logo.png"));
 
 	/** EE-Heaven logo used in the ABOUT dialog */

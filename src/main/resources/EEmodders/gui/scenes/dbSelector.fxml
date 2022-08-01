@@ -48,7 +48,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label alignment="BOTTOM_RIGHT" contentDisplay="CENTER" text="Icon created by Fortuking (King rocks balls!)" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="creditLabel" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" text="&lt;icon credit&gt;" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="12.0" />
                            </font>

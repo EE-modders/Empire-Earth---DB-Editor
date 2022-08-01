@@ -7,6 +7,7 @@ package EEmodders.datmanager;
  */
 public class Settings {
 
+	public static final String NAME = "Empire Earth - DB Editor";
 	/** The editor version */
 	public static final String VERSION = "3.0.0-beta";
 	public static final String VERSION_YEAR = "2016 - 2022";
@@ -21,4 +22,7 @@ public class Settings {
 	/** Max time (milliseconds) it will wait for loading to complete. If time exceed this value, the load is considered failed. */
 	public static final int LOAD_MAX_WAIT = 10000;
 
+	public static final String DB_ICON = "DBE_icon.png";
+	public static final String DB_ICON_CREDIT = "Icon created by Fortuking"; // (King rocks balls!!)
+	public static final String EES_URL = "https://github.com/EE-modders/Empire-Earth-Studio-2";
 }
