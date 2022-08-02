@@ -37,7 +37,7 @@ public class Core extends Application {
 	private static Stage stage;
 
 	/** If true, the editor is in AOC mode */
-	private static boolean AOC = false;
+	private static boolean bAOC = false;
 	private static final File dataDirectory = Paths.get("EEEditorData").toFile();
 	
 	public static File getDataDirectory() { return new File(dataDirectory, Core.isAOC() ? "AOC" : "Vanilla"); }
@@ -46,7 +46,7 @@ public class Core extends Application {
 	 *
 	 * @return true if editor is in AOC mode, false otherwise
 	 */
-	public static boolean isAOC() { return AOC; }
+	public static boolean isAOC() { return bAOC; }
 	public static Stage getStage() { return stage; }
 	public static DBSelectorController getDbSelectorController() { return dbSelectorController; }
 
@@ -66,18 +66,16 @@ public class Core extends Application {
 		}
 
 		versionSelector();
-		dbSelector();
+		DatStructure.initAllStructures(bAOC);
 
 		// This makes the Language class initialize in background... SSSHHH!!!
 		final var languageThread = new Thread(Language::updateLanguages);
-		final var datStructuresThread = new Thread(DatStructure::initAllStructures);
-
 		languageThread.start();
-		datStructuresThread.start();
+
+		dbSelector();
 
 		try {
 			languageThread.join();
-			datStructuresThread.join();
 		} catch (final InterruptedException e) {
 			Util.printException(splashScreen, e, true);
 			System.exit(0);
@@ -89,7 +87,7 @@ public class Core extends Application {
 	private void dbSelector() throws IOException {
 		final var fxmlLoader = new FXMLLoader(DBSelectorController.class.getResource("dbSelector.fxml"));
 		final var scene = new Scene(fxmlLoader.load());
-		final var aoc = (AOC ? "AOC" : "EEC");
+		final var aoc = (bAOC ? "AOC" : "EEC");
 
 		DBSelectorController controller = fxmlLoader.getController();
 		dbSelectorController = controller;
@@ -118,7 +116,7 @@ public class Core extends Application {
 		var result = question.showAndWait();
 
 		if (result.get() != btnExit) {
-			AOC = result.get() == btnAOC;
+			bAOC = result.get() == btnAOC;
 		} else {
 			Core.exit();
 		}
@@ -138,6 +136,16 @@ public class Core extends Application {
 
 		popup.setContentText(about);
 		popup.showAndWait();
+	}
+
+	public static void showMissingFilesError() {
+		var error = new Alert(Alert.AlertType.ERROR);
+
+		Util.setAlertIcon(error);
+		error.setTitle("Missing control files");
+		error.setHeaderText("EEEditorData could not be found!");
+		error.setContentText("Please make sure, you have EEEditorData folder \n next to the .jar file and then try again!");
+		error.showAndWait();
 	}
 
 	private static boolean supportedJava() {

@@ -1,7 +1,9 @@
 package EEmodders.datstructure;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.NoSuchFileException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -72,8 +74,8 @@ public abstract class DatStructure {
 			PremadeCivs.instance, RandomMap.instance, Sounds.instance, StartingResourches.instance, TechTree.instance, Terrain.instance, TerrainGrayTextures.instance, TerrainType.instance, UIBack.instance, UIControlEvents.instance,
 			UIControls.instance, UIFonts.instance, UIFormEvents.instance, UIForms.instance, UIHotkey.instance, UnitBehavior.instance, UnitSet.instance, Upgrade.instance, WeaponToHit.instance, World.instance };
 
-	public static DatStructure[] GetAllStructures() {
-		return Core.isAOC() ? ALL_AOC_DATSTRUCTURES : ALL_VANILLA_DATSTRUCTURES;
+	public static DatStructure[] GetAllStructures(boolean aoc) {
+		return aoc ? ALL_AOC_DATSTRUCTURES : ALL_VANILLA_DATSTRUCTURES;
 	}
 
 	public static DatStructure[] GetLoadedStructures() {
@@ -98,28 +100,32 @@ public abstract class DatStructure {
 	 *
 	 * @throws IOException
 	 */
-	public static void initAllStructures() {
+	public static void initAllStructures(boolean aoc) {
 		if (Settings.DEBUG) {
 			System.out.println("Initialize structures");
 		}
-		final Map<String, DatStructure> datStructureMap = Arrays.stream(GetAllStructures()).collect(Collectors.toMap(ds -> ds.fileName, ds -> ds));
+		final Map<String, DatStructure> datStructureMap = Arrays.stream(GetAllStructures(aoc))
+				.collect(Collectors.toMap(ds -> ds.fileName, ds -> ds));
 
 		try {
 			final var commonFieldsReader = new DatStructureReader(new File(Core.getDataDirectory(), "common.dats"), datStructureMap);
 			commonFieldsMap = commonFieldsReader.toMap();
+		} catch (final FileNotFoundException | NoSuchFileException e) {
+			Core.showMissingFilesError();
+			Core.exit();
 		} catch (final IOException exc) {
 			Util.printException(MainFrame.instance, exc, true);
 			return;
 		}
 
-		for (final DatStructure datStructure : GetAllStructures()) {
+		for (final DatStructure datStructure : GetAllStructures(aoc)) {
 			try {
 				datStructure.initialize(datStructureMap);
 			} catch (final IOException exc) {
 				Util.printException(MainFrame.instance, exc, true);
-				continue;
 			}
 		}
+
 		if (Settings.DEBUG) {
 			System.out.println("Structures initialized");
 		}
