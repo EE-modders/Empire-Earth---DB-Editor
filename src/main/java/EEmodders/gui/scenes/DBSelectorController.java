@@ -80,7 +80,7 @@ public class DBSelectorController {
             };
             btn.setOnMouseClicked(eventHandler);
 
-            buttonGrid.add(btn, i%3, i /3);
+            buttonGrid.add(btn, i%3, i/3);
         }
 
         borderPane.setCenter(buttonGrid);
