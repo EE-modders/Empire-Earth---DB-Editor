@@ -134,8 +134,12 @@ public class MainFrame extends JFrame {
 				.map(LoadThread::getDatFile)
 				.collect(Collectors.toList());
 
-		if (filesNotLoaded.size() > 0) {
-			showLoadError(filesNotLoaded);
+		final Map<DatFile, Throwable> mapNotLoaded = threads.stream()
+				.filter(LoadThread::isFailed)
+				.collect(Collectors.toMap(LoadThread::getDatFile, LoadThread::getError));
+
+		if (!mapNotLoaded.isEmpty()) {
+			showLoadError(mapNotLoaded);
 			return;
 		}
 
@@ -158,9 +162,9 @@ public class MainFrame extends JFrame {
 		Core.getDbSelectorController().setDBButtons(loadedDBs);
 	}
 
-	private void showLoadError(Collection<DatFile> notLoaded) {
+	private void showLoadError(Map<DatFile, Throwable> notLoaded) {
 		var errorMessage = new Alert(Alert.AlertType.ERROR);
-		errorMessage.getDialogPane().setMinSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+		errorMessage.getDialogPane().setMinSize(400, Region.USE_PREF_SIZE);
 		Util.setAlertIcon(errorMessage);
 		errorMessage.setTitle("ERROR");
 		errorMessage.setHeaderText("An error occurred during the loading of DAT files!");
@@ -176,23 +180,26 @@ public class MainFrame extends JFrame {
 				"------------------------------------------------ \n" +
 				"Following files failed to load: \n");
 
-		for (var dat : notLoaded) {
+		for (var dat : notLoaded.keySet())
 			coreMessage.append("- ").append(dat.getName()).append("\n");
-		}
 
 		errorMessage.setContentText(coreMessage.toString());
 
-		var btnEES = new ButtonType("Get EE Studio II");
+		var btnEES = new ButtonType("EE Studio II");
+		var btnTrace = new ButtonType("Stacktraces", ButtonBar.ButtonData.LEFT);
 		var btnClose = new ButtonType("Close", ButtonBar.ButtonData.NEXT_FORWARD);
 		var btnExit = new ButtonType("Exit", ButtonBar.ButtonData.LEFT);
 
-		errorMessage.getButtonTypes().setAll(btnExit, btnEES, btnClose);
+		errorMessage.getButtonTypes().setAll(btnExit, btnTrace, btnEES, btnClose);
 
 		var result = errorMessage.showAndWait();
 		var choice = result.get();
 
 		if (choice == btnEES) {
 			new Thread(Util::openEESUrl).start();
+		} else if (choice == btnTrace) {
+			for (var error : notLoaded.values())
+				Util.printException(null, error, false);
 		} else if (choice == btnExit) {
 			Core.exit();
 		}
