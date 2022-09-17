@@ -81,9 +81,9 @@
 80	@ID_SOUND
 81	@ID_SOUND
 82	@UNKNOWN_INT4
-83	4	INTEGER	<unknown> animation status	0: disabled	EDITABLE	KNOWN	BLACK
-84	4	INTEGER	<unknown> animation start frame	animation end frame	EDITABLE	KNOWN	BLACK
-85	4	INTEGER	<unknown> animation end frame	animation end frame	EDITABLE	KNOWN	BLACK
+83	4	INTEGER	Moving animation start frame	Moving animation start frame	EDITABLE	KNOWN	BLACK
+84	4	INTEGER	Moving animation end frame	Moving animation end frame	EDITABLE	KNOWN	BLACK
+85	4	INTEGER	Moving animation speed	Moving animation speed	EDITABLE	KNOWN	BLACK
 86	@UNKNOWN_INT4
 87	@UNUSED_INT4
 88	@UNKNOWN_INT4
