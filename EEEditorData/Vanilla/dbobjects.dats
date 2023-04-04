@@ -226,7 +226,7 @@
 225	@ID_TECH
 226	1	BOOLEAN	Is building?	Is building?	EDITABLE	KNOWN	BLACK
 227	1	BOOLEAN	Stealth	Stealth	EDITABLE	KNOWN	BLACK
-228	@UNKNOWN_BOOL1
+228	1	BOOLEAN	Disable Technology	in Scenario Editor	EDITABLE	KNOWN	BLACK
 229	1	BOOLEAN	Can land on airport?	Can land on airport?	EDITABLE	KNOWN	BLACK
 230	4	INTEGER	Can land on carrier	1: true, 0: false, 256:???	EDITABLE	KNOWN	BLACK
 231	4	LINK	dbobjects.dat:0	Spawn on death	Spawn on death	EDITABLE	KNOWN	BLACK

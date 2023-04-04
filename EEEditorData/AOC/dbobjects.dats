@@ -226,7 +226,7 @@
 225	@ID_TECH
 226	1	BOOLEAN	Is building?	Is building?	EDITABLE	KNOWN	BLACK
 227	1	BOOLEAN	Stealth	Stealth	EDITABLE	KNOWN	BLACK
-228	@UNKNOWN_BOOL1
+228	1	BOOLEAN	Disable Technology	in Scenario Editor	EDITABLE	KNOWN	BLACK
 229	1	INTEGER	<Seems related to aircraft, but the clubman...>	<Seems related to aircraft, but the clubman...>	EDITABLE	KNOWN	BLACK
 230	@UNKNOWN_INT4
 231	4	LINK	dbobjects.dat:0	Spawn on death	Spawn on death	EDITABLE	KNOWN	BLACK
