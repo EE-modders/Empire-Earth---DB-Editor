@@ -81,7 +81,7 @@ public class MainFrame extends JFrame {
 		allFiles = Arrays.stream(DatStructure.GetLoadedStructures())
 				.map(datStructure -> new DatFile(directory, datStructure))
 				.filter(DatFile::exists)
-				.collect(Collectors.toList());
+				.toList();
 
 		if (allFiles.isEmpty()) {
 			var alert = new Alert(Alert.AlertType.ERROR);

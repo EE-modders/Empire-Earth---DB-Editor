@@ -82,6 +82,7 @@ public class Core extends Application {
 		}
 
 		splashScreen.setVisible(false);
+		splashScreen.dispose();
 	}
 
 	private void dbSelector() throws IOException {
