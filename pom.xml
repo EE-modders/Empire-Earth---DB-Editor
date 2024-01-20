@@ -6,7 +6,7 @@
 
     <groupId>EEmodders</groupId>
     <artifactId>DBEditor</artifactId>
-    <version>2.1.5</version>
+    <version>3.0.0</version>
     <name>Empire Earth - DB Editor</name>
 
     <!-- TODO: https://github.com/johanjanssen/JavaUpgrades/tree/main/multi-release-jar -->
@@ -14,34 +14,35 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.8.2</junit.version>
+        <javafx.version>21.0.2</javafx.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>11.0.2</version>
+            <version>${javafx.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>11.0.2</version>
+            <version>${javafx.version}</version>
             <scope>compile</scope>
         </dependency>
 
-        <!-- needed to create cross platform JAR file -->
+        <!-- needed to create cross-platform JAR file -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>11.0.2</version>
+            <version>${javafx.version}</version>
             <classifier>linux</classifier>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>11.0.2</version>
+            <version>${javafx.version}</version>
             <classifier>win</classifier>
             <scope>compile</scope>
         </dependency>
@@ -103,7 +104,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>EEmodders.Main</mainClass>
+                            <mainClass>EEmodders.Main$Launcher</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
