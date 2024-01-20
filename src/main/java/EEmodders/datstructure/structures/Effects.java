@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import EEmodders.constants.EffectCode;
-import EEmodders.datmanager.Core;
+import EEmodders.Main;
 import EEmodders.datstructure.DatStructure;
 import EEmodders.datstructure.Entry;
 
@@ -31,7 +31,7 @@ public class Effects extends DatStructure {
 	@Override
 	public void customInit() throws IOException {
 		nameBuilder = (entry) -> EffectCode.parse((int) entry.get(8)).nameBuilder.apply(entry);
-		if (!Core.isAOC()) { // File structure has been changed in AOC
+		if (!Main.isAOC()) { // File structure has been changed in AOC
 			newEntryValues = new Object[] {
 					0, 0, 0f, 0f, 0f, -1, -1, -1,
 					-1, -1, -1, -1, -1, -1, -1, 0,

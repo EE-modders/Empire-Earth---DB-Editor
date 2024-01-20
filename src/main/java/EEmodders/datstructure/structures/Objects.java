@@ -3,7 +3,7 @@ package EEmodders.datstructure.structures;
 import java.io.IOException;
 import java.util.List;
 
-import EEmodders.datmanager.Core;
+import EEmodders.Main;
 import EEmodders.datstructure.DatStructure;
 import EEmodders.datstructure.Entry;
 
@@ -28,7 +28,7 @@ public class Objects extends DatStructure {
 
 	@Override
 	public void customInit() throws IOException {
-		if (!Core.isAOC()) { // File structure has been changed in AOC
+		if (!Main.isAOC()) { // File structure has been changed in AOC
 			newEntryValues = new Object[] {
 					"<New object>", 0, -1, -1, 0, -1, 0, 0,
 					0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f,

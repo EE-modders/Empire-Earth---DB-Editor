@@ -3,7 +3,7 @@ package EEmodders.datstructure.structures;
 import java.io.IOException;
 import java.util.List;
 
-import EEmodders.datmanager.Core;
+import EEmodders.Main;
 import EEmodders.datstructure.DatStructure;
 import EEmodders.datstructure.Entry;
 
@@ -29,7 +29,7 @@ public class TechTree extends DatStructure {
 	@Override
 	public void customInit() throws IOException {
 		extraField = DatStructure.getCommonField("ID_TECH_FROM_OBJECT");
-		if (!Core.isAOC()) { // File structure has been changed in AOC
+		if (!Main.isAOC()) { // File structure has been changed in AOC
 			newEntryValues = new Object[] {
 					"<New technology>", -1, 0, 0, 15, -1, -1, 0,
 					0, 0, 0, 0, 0, 0, 0, 0,

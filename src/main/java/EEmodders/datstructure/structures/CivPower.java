@@ -3,7 +3,7 @@ package EEmodders.datstructure.structures;
 import java.io.IOException;
 import java.util.List;
 
-import EEmodders.datmanager.Core;
+import EEmodders.Main;
 import EEmodders.datstructure.DatStructure;
 import EEmodders.datstructure.Entry;
 
@@ -29,7 +29,7 @@ public class CivPower extends DatStructure {
 
 	@Override
 	public void customInit() throws IOException {
-		if (!Core.isAOC()) { // This file has been added in AOC
+		if (!Main.isAOC()) { // This file has been added in AOC
 			throw new IllegalStateException("Vanilla game doesn't have powers");
 		}
 	}

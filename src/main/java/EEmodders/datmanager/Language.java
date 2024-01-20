@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 
 import javax.swing.JOptionPane;
 
+import EEmodders.Main;
 import EEmodders.gui.GUI;
 
 
@@ -35,7 +36,7 @@ public class Language implements Comparable<Language> {
 
 
 	public static void updateLanguages() {
-		var languageFile = new File(Core.getDataDirectory(), "language.txt");
+		var languageFile = new File(Main.getDataDirectory(), "language.txt");
 
 		try (var input = new BufferedReader(new FileReader(languageFile))) {
 			String line;

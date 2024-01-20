@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import EEmodders.Main;
 import EEmodders.gui.GUI;
 import EEmodders.gui.components.JScrollPaneRed;
 import javafx.scene.control.Alert;
@@ -76,7 +77,7 @@ public final class Util {
 
 		dirChooser.setTitle("Select the folder which contains the EE dat files");
 
-		File dbDir = dirChooser.showDialog(Core.getStage());
+		File dbDir = dirChooser.showDialog(Main.getStage());
 
 		return dbDir;
 	}

@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import EEmodders.datmanager.Core;
+import EEmodders.Main;
 import EEmodders.datmanager.DatFile;
 import EEmodders.datmanager.Settings;
 import EEmodders.datmanager.Util;
@@ -54,7 +54,7 @@ import EEmodders.datstructure.structures.UnitSet;
 import EEmodders.datstructure.structures.Upgrade;
 import EEmodders.datstructure.structures.WeaponToHit;
 import EEmodders.datstructure.structures.World;
-import EEmodders.gui.MainFrame;
+import EEmodders.gui.SplashScreen;
 
 /**
  * Represents the structure of the entries of a file
@@ -79,7 +79,7 @@ public abstract class DatStructure {
 	}
 
 	public static DatStructure[] GetLoadedStructures() {
-		return Arrays.stream(Core.isAOC() ? ALL_AOC_DATSTRUCTURES : ALL_VANILLA_DATSTRUCTURES).filter(ds -> ds.initialized).toArray(DatStructure[]::new);
+		return Arrays.stream(Main.isAOC() ? ALL_AOC_DATSTRUCTURES : ALL_VANILLA_DATSTRUCTURES).filter(ds -> ds.initialized).toArray(DatStructure[]::new);
 	}
 
 
@@ -108,13 +108,13 @@ public abstract class DatStructure {
 				.collect(Collectors.toMap(ds -> ds.fileName, ds -> ds));
 
 		try {
-			final var commonFieldsReader = new DatStructureReader(new File(Core.getDataDirectory(), "common.dats"), datStructureMap);
+			final var commonFieldsReader = new DatStructureReader(new File(Main.getDataDirectory(), "common.dats"), datStructureMap);
 			commonFieldsMap = commonFieldsReader.toMap();
 		} catch (final FileNotFoundException | NoSuchFileException e) {
-			Core.showMissingFilesError();
-			Core.exit();
+			Main.showMissingFilesError();
+			Main.exit();
 		} catch (final IOException exc) {
-			Util.printException(MainFrame.instance, exc, true);
+			Util.printException(Main.awtRoot, exc, true);
 			return;
 		}
 
@@ -122,7 +122,7 @@ public abstract class DatStructure {
 			try {
 				datStructure.initialize(datStructureMap);
 			} catch (final IOException exc) {
-				Util.printException(MainFrame.instance, exc, true);
+				Util.printException(Main.awtRoot, exc, true);
 			}
 		}
 
@@ -273,7 +273,7 @@ public abstract class DatStructure {
 	 * @throws IOException
 	 */
 	public void initialize(Map<String, DatStructure> datStructureMap) throws IOException {
-		final var datStructureReader = new DatStructureReader(new File(Core.getDataDirectory(), fileName + 's'), datStructureMap);
+		final var datStructureReader = new DatStructureReader(new File(Main.getDataDirectory(), fileName + 's'), datStructureMap);
 		fieldStructs = datStructureReader.toArray();
 		customInit();
 		entrySize = Arrays.stream(fieldStructs).mapToInt(x -> x.getSize()).sum();
