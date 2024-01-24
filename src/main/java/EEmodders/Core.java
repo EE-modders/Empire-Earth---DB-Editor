@@ -109,7 +109,7 @@ public class Core {
             DatFile.LOADED.forEach(DatFile::buildLinks);
             DatFile.LOADED.forEach(df -> df.dummyEntryGroup.sort(null));
 
-            return filesLoaded;
+            return DatFile.LOADED.stream().sorted().toList();
         } else {
             return null;
         }

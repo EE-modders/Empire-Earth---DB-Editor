@@ -20,15 +20,23 @@
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>${javafx.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
-            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>${javafx.version}</version>
         </dependency>
 
         <!-- needed to create cross-platform JAR file -->
@@ -37,14 +45,12 @@
             <artifactId>javafx-graphics</artifactId>
             <version>${javafx.version}</version>
             <classifier>linux</classifier>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
             <version>${javafx.version}</version>
             <classifier>win</classifier>
-            <scope>compile</scope>
         </dependency>
         <!--
         <dependency>
@@ -81,6 +87,12 @@
             <scope>compile</scope>
         </dependency>
         -->
+
+        <dependency>
+            <groupId>me.xdrop</groupId>
+            <artifactId>fuzzywuzzy</artifactId>
+            <version>1.4.0</version>
+        </dependency>
 
     </dependencies>
 

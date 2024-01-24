@@ -235,7 +235,7 @@ public class DatFile extends File implements Iterable<EntryGroup> {
 			} else {
 				selWindow = frameEditors.get(0);
 			}
-			selWindow.setVisible(true);
+			//selWindow.setVisible(true);
 			return selWindow;
 		} catch (final Exception e) {
 			Util.printException(parent, e, "Error while opening the window for DatFile: " + this, "Error", true);
