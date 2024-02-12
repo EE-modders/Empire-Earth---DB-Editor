@@ -1,29 +1,30 @@
-package EEmodders.datmanager;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.math.RoundingMode;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.text.NumberFormat;
-import java.util.*;
-import java.util.List;
-
-import javax.imageio.ImageIO;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+package EEmodders.Utils;
 
 import EEmodders.Main;
+import EEmodders.datmanager.Settings;
+import EEmodders.datmanager.StringIterator;
 import EEmodders.gui.GUI;
 import EEmodders.gui.components.JScrollPaneRed;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.math.RoundingMode;
+import java.net.URI;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.text.NumberFormat;
+import java.util.List;
+import java.util.*;
 
 public final class Util {
 
@@ -225,5 +226,21 @@ public final class Util {
 		try {
 			Desktop.getDesktop().browse(new URI(Settings.EES_URL));
 		} catch (Exception ignore) {}
+	}
+
+	public static String fromCString(byte[] data) {
+		int index = 0;
+		for (int i = 0; i < data.length; i++) {
+			if (data[i] == 0) {
+				index = i;
+				break;
+			}
+		}
+		return new String(Arrays.copyOfRange(data, 0, index));
+	}
+
+	public static byte[] toCString(String string, int maxSize) {
+		byte[] data = string.getBytes(StandardCharsets.US_ASCII);
+		return Arrays.copyOf(data, maxSize);
 	}
 }
