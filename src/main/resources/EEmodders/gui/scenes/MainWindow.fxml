@@ -61,6 +61,7 @@
                       <Menu mnemonicParsing="false" text="File">
                         <items>
                               <MenuItem disable="true" mnemonicParsing="false" text="Select DAT Folder" />
+                              <MenuItem disable="true" mnemonicParsing="false" text="Save all to file" />
                               <MenuItem disable="true" mnemonicParsing="false" text="Close Database" />
                               <SeparatorMenuItem mnemonicParsing="false" />
                           <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
@@ -117,11 +118,17 @@
                               </HBox>
                            </bottom>
                            <center>
-                              <Button fx:id="folderSelectButton" defaultButton="true" mnemonicParsing="false" onAction="#selectFolder" prefHeight="50.0" prefWidth="330.0" text="&lt;select DAT folder&gt;" BorderPane.alignment="CENTER">
+                              <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
                                  <BorderPane.margin>
                                     <Insets />
                                  </BorderPane.margin>
-                              </Button>
+                                 <children>
+                                    <Button fx:id="loadEEC" alignment="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="load EEC" />
+                                    <Button fx:id="loadAOC" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="load AOC" />
+                                    <Button fx:id="loadDOMW" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="load DOWM (WIP)" />
+                                    <Button fx:id="loadCOTN" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="load COTN (WIP)" />
+                                 </children>
+                              </VBox>
                            </center>
                            <top>
                               <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -145,7 +152,6 @@
                                           </Label>
                                        </children>
                                     </VBox>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                                  </children>
                               </StackPane>
                            </top>
