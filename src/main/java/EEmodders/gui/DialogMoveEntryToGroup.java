@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
 
-import EEmodders.datmanager.Util;
+import EEmodders.Utils.Util;
 import EEmodders.datstructure.Entry;
 import EEmodders.datstructure.EntryGroup;
 import EEmodders.gui.components.AbstractJListExtended;

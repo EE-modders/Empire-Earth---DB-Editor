@@ -1,8 +1,8 @@
 package EEmodders.gui.scenes;
 
-import EEmodders.datmanager.Core;
+import EEmodders.Core;
+import EEmodders.Main;
 import EEmodders.datmanager.DatFile;
-import EEmodders.gui.MainFrame;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -29,20 +29,20 @@ public class DBSelectorController {
 
         dirChooser.setTitle("Select the folder which contains the EE .dat files");
 
-        File binDir = dirChooser.showDialog(Core.getStage());
+        File binDir = dirChooser.showDialog(Main.getStage());
 
         if (binDir != null && binDir.isDirectory())
-            MainFrame.instance.loadFiles(binDir);
+            Core.getInstance().loadFiles(binDir);
     }
 
     @FXML
     private void showAbout() {
-        Core.showAbout();
+        Main.showAbout();
     }
 
     @FXML
     public void exit() {
-        Core.exit();
+        Main.exit();
     }
 
     public void setVersionLabel(String version) {
@@ -75,7 +75,7 @@ public class DBSelectorController {
             var eventHandler = new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    datfile.openInEditor(MainFrame.instance, false);
+                    datfile.openInEditor(Main.awtRoot, false);
                 }
             };
             btn.setOnMouseClicked(eventHandler);
@@ -85,7 +85,7 @@ public class DBSelectorController {
 
         borderPane.setCenter(buttonGrid);
 
-        Core.getStage().setWidth(500);
-        Core.getStage().setHeight(950);
+        Main.getStage().setWidth(500);
+        Main.getStage().setHeight(950);
     }
 }

@@ -22,7 +22,7 @@ import javax.swing.border.EmptyBorder;
 
 import EEmodders.constants.EnumValue;
 import EEmodders.datmanager.DatFile;
-import EEmodders.datmanager.Util;
+import EEmodders.Utils.Util;
 import EEmodders.datstructure.DatStructure;
 import EEmodders.datstructure.Entry;
 import EEmodders.datstructure.FieldStruct;

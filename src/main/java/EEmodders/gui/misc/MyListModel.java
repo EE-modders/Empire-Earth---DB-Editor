@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 import javax.swing.AbstractListModel;
 
-import EEmodders.datmanager.Util;
+import EEmodders.Utils.Util;
 
 
 /**

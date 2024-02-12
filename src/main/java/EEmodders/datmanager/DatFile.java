@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
+import EEmodders.Utils.Util;
 import EEmodders.datstructure.DatStructure;
 import EEmodders.datstructure.Entry;
 import EEmodders.datstructure.EntryGroup;
@@ -235,7 +236,7 @@ public class DatFile extends File implements Iterable<EntryGroup> {
 			} else {
 				selWindow = frameEditors.get(0);
 			}
-			//selWindow.setVisible(true);
+			selWindow.setVisible(true);
 			return selWindow;
 		} catch (final Exception e) {
 			Util.printException(parent, e, "Error while opening the window for DatFile: " + this, "Error", true);

@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import EEmodders.datmanager.Util;
+import EEmodders.Utils.Util;
 import EEmodders.datstructure.FieldStruct;
 
 

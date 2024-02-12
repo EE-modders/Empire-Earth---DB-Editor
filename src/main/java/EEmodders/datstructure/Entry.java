@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 import EEmodders.datmanager.DatFile;
 import EEmodders.datmanager.Language;
-import EEmodders.datmanager.Util;
+import EEmodders.Utils.Util;
 import EEmodders.datstructure.structures.Objects;
 import EEmodders.datstructure.structures.TechTree;
 

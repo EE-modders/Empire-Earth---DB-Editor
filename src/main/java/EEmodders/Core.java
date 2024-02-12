@@ -2,7 +2,7 @@ package EEmodders;
 
 import EEmodders.datmanager.DatFile;
 import EEmodders.datmanager.Settings;
-import EEmodders.datmanager.Util;
+import EEmodders.Utils.Util;
 import EEmodders.datstructure.DatStructure;
 import EEmodders.gui.DialogProgressBar;
 import EEmodders.gui.LoadThread;

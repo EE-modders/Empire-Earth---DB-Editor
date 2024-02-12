@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import EEmodders.datmanager.Util;
+import EEmodders.Utils.Util;
 
 /**
  * This class represents a link between an entry and another entry

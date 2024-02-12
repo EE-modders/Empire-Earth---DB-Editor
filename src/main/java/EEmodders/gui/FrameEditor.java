@@ -41,7 +41,7 @@ import EEmodders.Main;
 import EEmodders.datmanager.DatFile;
 import EEmodders.datmanager.DatFile.EntryLocation;
 import EEmodders.datmanager.Settings;
-import EEmodders.datmanager.Util;
+import EEmodders.Utils.Util;
 import EEmodders.datstructure.DatStructure;
 import EEmodders.datstructure.Entry;
 import EEmodders.datstructure.EntryGroup;

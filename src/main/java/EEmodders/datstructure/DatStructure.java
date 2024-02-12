@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import EEmodders.Main;
 import EEmodders.datmanager.DatFile;
 import EEmodders.datmanager.Settings;
-import EEmodders.datmanager.Util;
+import EEmodders.Utils.Util;
 import EEmodders.datstructure.structures.AIUnitTargeting;
 import EEmodders.datstructure.structures.AmbientSounds;
 import EEmodders.datstructure.structures.Animals;
@@ -54,7 +54,6 @@ import EEmodders.datstructure.structures.UnitSet;
 import EEmodders.datstructure.structures.Upgrade;
 import EEmodders.datstructure.structures.WeaponToHit;
 import EEmodders.datstructure.structures.World;
-import EEmodders.gui.SplashScreen;
 
 /**
  * Represents the structure of the entries of a file
