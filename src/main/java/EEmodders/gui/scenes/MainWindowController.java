@@ -2,85 +2,84 @@ package EEmodders.gui.scenes;
 
 import EEmodders.Core;
 import EEmodders.Main;
+import EEmodders.database.DBMapping;
+import EEmodders.database.DBTable;
+import EEmodders.database.DBType;
 import EEmodders.datmanager.DatFile;
 import EEmodders.datmanager.Settings;
-import EEmodders.datmanager.Util;
-import EEmodders.gui.components.JButtonRed;
-import EEmodders.gui.components.JPanelEntry;
-import javafx.application.Platform;
+import EEmodders.Utils.Util;
 import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import me.xdrop.fuzzywuzzy.FuzzySearch;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 // maybe useful for later: https://www.tutorialspoint.com/javafx-label-setlabelfor-method-example
 
 public class MainWindowController {
     private Stage mainWindowStage;
-    private String dbMode;
 
     @FXML private Label versionLabel;
     @FXML private Label iconCreditLabel;
     @FXML private Label dbmodeLabel;
-    @FXML private Button folderSelectButton;
+
+    @FXML private Button loadEEC;
+    @FXML private Button loadAOC;
+    @FXML private Button loadDOMW;
+    @FXML private Button loadCOTN;
 
     @FXML private TextField dbListFilter;
     @FXML private VBox dbButtonList;
 
     @FXML private TabPane mainTabs;
 
-    @FXML
-    private void selectFolder() {
+    private void selectFolder(DBType dbMode) {
         var dirChooser = new DirectoryChooser();
         dirChooser.setTitle("Select folder containing .dat files for "+dbMode);
 
         File datDir = dirChooser.showDialog(mainWindowStage);
         if (datDir != null && datDir.isDirectory()) {
-            var loadedFiles = Core.getInstance().loadFiles(datDir);
-            if (loadedFiles != null && !loadedFiles.isEmpty()) {
-                setDBButtons(loadedFiles);
+            dbListFilter.clear();
+            dbListFilter.setDisable(true);
+            dbButtonList.getChildren().clear();
+            clearTabs();
+
+            List<DBTable> loadedTables = DBMapping.loadDatabase(dbMode, datDir);
+            if (loadedTables != null && !loadedTables.isEmpty()) {
+                setDBButtons(loadedTables);
+                mainWindowStage.setTitle("%s (%s)".formatted(Settings.NAME, dbMode));
+                dbmodeLabel.setText(dbMode.name());
                 dbListFilter.setDisable(false);
             }
         }
     }
 
-    private void setDBButtons(List<DatFile> fileList) {
-        for (var file : fileList) {
-            var btn = new Button(file.getPrettyName());
-            btn.setTextAlignment(TextAlignment.CENTER);
-            btn.setAlignment(Pos.CENTER);
+    private void setDBButtons(List<DBTable> dbTables) {
+        for (var table : dbTables) {
+            var btn = new Button(table.getName());
             btn.setPrefSize(150, 25);
+            btn.setAlignment(Pos.CENTER);
+            btn.setTextAlignment(TextAlignment.CENTER);
 
             btn.setOnAction(actionEvent -> {
-                String tabName = file.getPrettyName();
+                String tabName = table.getName();
 
                 // check if already opened
                 for (var ltab : mainTabs.getTabs()) {
                     if (ltab.getText().equals(tabName)) {
                         mainTabs.getSelectionModel().select(ltab);
-
-                        ltab.getContent().getParent().requestFocus();
-                        //ltab.getContent().requestFocus();
                         return;
                     }
                 }
@@ -88,50 +87,35 @@ public class MainWindowController {
                 var tab = new Tab(tabName);
                 tab.setClosable(true);
 
-                var swingNode = new SwingNode();
-                var tabPane = new AnchorPane(swingNode);
+                var placeholder = new Label(table.getFilename());
+                var tabContent = new AnchorPane(placeholder);
 
-                AnchorPane.setTopAnchor(swingNode, 0d);
-                AnchorPane.setBottomAnchor(swingNode, 0d);
-                AnchorPane.setLeftAnchor(swingNode, 0d);
-                AnchorPane.setRightAnchor(swingNode, 0d);
+                AnchorPane.setTopAnchor(placeholder, 0d);
+                AnchorPane.setBottomAnchor(placeholder, 0d);
+                AnchorPane.setLeftAnchor(placeholder, 0d);
+                AnchorPane.setRightAnchor(placeholder, 0d);
 
-                var panel = new JPanel(new GridLayout(3, 1));
-                panel.setFocusable(false);
-
-                var jtf = new JTextField("NO 1", 20);
-                panel.add(jtf);
-                panel.add(new JTextField("NO 2", 20));
-                panel.add(new JButton("NO 3"));
-
-                swingNode.setContent(panel);
-                //swingNode.getParent().requestFocus();
-                swingNode.requestFocus();
-                tab.setContent(tabPane);
-
-                /*
-                var newScene = new Scene(rootPane, 800, 600);
-                var newStage = new Stage();
-                newStage.setTitle("LOL LMAO");
-                newStage.setScene(newScene);
-                newStage.show();
-                 */
-
-                //testSwing.setContent(panel);
-                //tab.setContent(testSwing);
-
-                /*
-                var frame = file.openInEditor(swingNode.getContent(), true);
-                swingNode.setContent(frame.getRootPane());
-                 */
-
-                //tab.setContent(tabPane);
+                tab.setContent(tabContent);
                 mainTabs.getTabs().add(tab);
                 mainTabs.getSelectionModel().select(tab);
             });
 
             dbButtonList.getChildren().add(btn);
         }
+    }
+
+    /**
+     * Clears all tabs except the default home
+     */
+    private void clearTabs() {
+        mainTabs.getTabs().stream()
+                .filter(tab -> tab.getText().equals("Home"))
+                .findFirst()
+                .ifPresent(tab -> {
+                    mainTabs.getTabs().clear();
+                    mainTabs.getTabs().add(tab);
+                    mainTabs.getSelectionModel().select(tab);
+                });
     }
 
     @FXML
@@ -150,6 +134,7 @@ public class MainWindowController {
             return;
         }
 
+        // FIXME use Collectors.partitioningBy
         List<Button> visible = new ArrayList<>();
         List<Button> invisible = new ArrayList<>();
 
@@ -179,17 +164,17 @@ public class MainWindowController {
         Main.exit();
     }
 
-    public void initUI(Stage stage, boolean isAOC) {
-        this.mainWindowStage = stage;
-        dbMode = isAOC ? "AOC" : "EEC";
+    public void initUI(Stage stage) {
+        mainWindowStage = stage;
 
-        mainWindowStage.setTitle(Settings.NAME+" ("+dbMode+")");
+        mainWindowStage.setTitle(Settings.NAME);
         mainWindowStage.getIcons().add(Util.getDBEditorIcon());
 
         versionLabel.setText(Settings.VERSION);
         iconCreditLabel.setText(Settings.DB_ICON_CREDIT);
-        dbmodeLabel.setText(dbMode);
+        dbmodeLabel.setText("---");
 
-        folderSelectButton.setText("Select DAT folder for "+dbMode);
+        loadEEC.setOnAction(ev -> selectFolder(DBType.EEC));
+        loadAOC.setOnAction(ev -> selectFolder(DBType.AOC));
     }
 }
