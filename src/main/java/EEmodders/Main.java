@@ -10,7 +10,7 @@ import javax.swing.*;
 import EEmodders.datmanager.DatFile;
 import EEmodders.datmanager.Language;
 import EEmodders.datmanager.Settings;
-import EEmodders.datmanager.Util;
+import EEmodders.Utils.Util;
 import EEmodders.datstructure.DatStructure;
 import EEmodders.gui.SplashScreen;
 import EEmodders.gui.scenes.DBSelectorController;
@@ -51,19 +51,18 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
-		var splashScreen = new SplashScreen();
+		var splashScreen = new SplashScreen(Settings.NAME);
 		splashScreen.setVisible(true);
-
 		Main.stage = stage;
 
-		versionSelector();
+		splashScreen.setStatusLabel("init dat structures");
 		DatStructure.initAllStructures(bAOC);
 
 		// This makes the Language class initialize in background... SSSHHH!!!
 		final var languageThread = new Thread(Language::updateLanguages);
 		languageThread.start();
 
-		//dbSelector(stage);
+		splashScreen.setStatusLabel("loading main UI");
 		initMainWindow(stage);
 
 		try {
@@ -77,33 +76,12 @@ public class Main extends Application {
 		splashScreen.dispose();
 	}
 
-	// TODO integrate this into the main window frame
-	private void versionSelector() {
-		var question = new Alert(Alert.AlertType.CONFIRMATION);
-		Util.setAlertIcon(question);
-		question.setTitle(Settings.NAME);
-		question.setHeaderText("EE Classic or EE AoC?");
-
-		var btnEEC = new ButtonType("EE Classic");
-		var btnAOC = new ButtonType("AOC");
-		var btnExit = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
-
-		question.getButtonTypes().setAll(btnEEC, btnAOC, btnExit);
-		var result = question.showAndWait();
-
-		if (result.isPresent() && result.get() != btnExit) {
-			bAOC = result.get() == btnAOC;
-		} else {
-			Main.exit();
-		}
-	}
-
 	private void initMainWindow(Stage stage) throws IOException {
 		var fxmlLoader = new FXMLLoader(MainWindowController.class.getResource("MainWindow.fxml"));
 		var scene = new Scene(fxmlLoader.load());
 
 		MainWindowController controller = fxmlLoader.getController();
-		controller.initUI(stage, bAOC);
+		controller.initUI(stage);
 
 		stage.setScene(scene);
 		stage.show();

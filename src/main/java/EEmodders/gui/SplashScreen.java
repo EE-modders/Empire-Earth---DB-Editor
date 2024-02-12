@@ -4,16 +4,17 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import EEmodders.datmanager.Settings;
-import EEmodders.datmanager.Util;
+import EEmodders.Utils.Util;
 import EEmodders.gui.components.JImagePanel;
 
 /**
  * Splash screen
  */
 public class SplashScreen extends JFrame {
+	private final JLabel statusLabel = new JLabel("");
 
-	public SplashScreen() {
-		super(Settings.NAME);
+	public SplashScreen(String title) {
+		super(title.concat(" (splash)"));
 		initGUI();
 	}
 
@@ -36,13 +37,20 @@ public class SplashScreen extends JFrame {
 
 		labelVersion.setHorizontalAlignment(SwingConstants.CENTER);
 		iconCredit.setHorizontalAlignment(SwingConstants.CENTER);
+		statusLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		statusLabel.setForeground(Color.WHITE);
 
 		imagePanel.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
 		imagePanel.setLayout(new BorderLayout(0, 0));
 
-		imagePanel.add(labelVersion, BorderLayout.SOUTH);
-		imagePanel.add(iconCredit, BorderLayout.NORTH);
+		imagePanel.add(labelVersion, BorderLayout.NORTH);
+		imagePanel.add(statusLabel, BorderLayout.CENTER);
+		imagePanel.add(iconCredit, BorderLayout.SOUTH);
 
 		setContentPane(imagePanel);
+	}
+
+	public void setStatusLabel(String status) {
+		SwingUtilities.invokeLater(() -> statusLabel.setText(status));
 	}
 }
