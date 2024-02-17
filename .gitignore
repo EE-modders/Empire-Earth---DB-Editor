@@ -10,6 +10,7 @@
 *.lnk
 *.bak
 *.jar
+*.hexproj
 
 doc_old/
 Screenshot*.png
