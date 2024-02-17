@@ -103,3 +103,32 @@ dbanimals.dat:
   - BOOL;PlaceHold Bool 4
   - FLOAT;PlaceHold Float 1
   - FLOAT;PlaceHold Float 2
+
+dbareaeffect.dat:
+  - STRING;Description
+  - INTEGER;ID
+  - INTEGER;Value
+  - INTEGER;Area Effect Type
+  - INTEGER;Focus Range
+  - INTEGER;Area Effect Shape
+  - INTEGER;Affected Unit Set
+  - INTEGER;Sides Affected
+  - INTEGER;Graphics Effect
+  - INTEGER;Unit Icon Graphic Object
+  - INTEGER;Affected By Graphic Effect
+  - INTEGER;AreaEffectInt1
+  - INTEGER;AreaEffectInt2
+  - INTEGER;AreaEffectInt3
+  - INTEGER;AreaEffectInt4
+  - FLOAT;AreaEffectFloat0
+  - FLOAT;AreaEffectFloat1
+  - FLOAT;AreaEffectFloat2
+  - FLOAT;AreaEffectFloat3
+  - FLOAT;AreaEffectFloat4
+  - FLOAT;AreaEffectFloat5
+  - BOOL;AreaEffectBool1
+  - BOOL;AreaEffectBool2
+  - BOOL;AreaEffectBool3
+  - BOOL;AreaEffectBool4
+  - BOOL;AreaEffectBool5
+  - PAD_24
