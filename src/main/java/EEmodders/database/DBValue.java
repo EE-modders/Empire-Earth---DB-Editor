@@ -3,6 +3,8 @@ package EEmodders.database;
 import EEmodders.Utils.Util;
 import com.google.common.io.LittleEndianDataInputStream;
 
+import javax.lang.model.type.NullType;
+import javax.lang.model.type.UnknownTypeException;
 import java.text.ParseException;
 
 public class DBValue<T> {
@@ -11,8 +13,17 @@ public class DBValue<T> {
     private final String name;
     private final String description;
 
-    public static DBValue<?> readFrom(LittleEndianDataInputStream inStream, Type type, String name, String description) throws Exception {
+    public static DBValue<?> readFrom(LittleEndianDataInputStream inStream, String[] configEntry) throws Exception {
+        if (configEntry.length < 1) {
+            throw new ParseException("config entry is empty", configEntry.length);
+        }
+
+        Type type = Type.valueOf(configEntry[0].strip());
+        String name = configEntry.length >= 2 ? configEntry[1].strip() : "";
+        String description = configEntry.length >= 3 ? configEntry[2].strip() : "";
+
         return switch (type) {
+            // value types
             case STRING -> {
                 byte[] chars = new byte[100];
                 int n = inStream.read(chars);
@@ -20,16 +31,29 @@ public class DBValue<T> {
                     throw new ParseException("String shorter than expected length", n);
                 }
 
-                yield new DBValue<>(Util.fromCString(chars), DBValue.Type.STRING, name, description);
+                yield new DBValue<>(Util.fromCString(chars), Type.STRING, name, description);
             }
-            case INTEGER -> new DBValue<>(inStream.readInt(), DBValue.Type.INTEGER, name, description);
-            case FLOAT -> new DBValue<>(inStream.readFloat(), DBValue.Type.FLOAT, name, description);
-            case BOOL -> {
-                // 4 byte boolean
-                boolean bool = inStream.readInt() > 0;
-                yield new DBValue<>(bool, DBValue.Type.BOOL, name, description);
+            case INTEGER -> new DBValue<>(inStream.readInt(), Type.INTEGER, name, description);
+            case FLOAT -> new DBValue<>(inStream.readFloat(), Type.FLOAT, name, description);
+            case BOOL -> new DBValue<>(inStream.readBoolean(), Type.BOOL, name, description);
+
+            // padding types
+            case PAD_8 -> {
+                inStream.readByte();
+                yield new Padding(type);
             }
-            case BOOL8 -> /* 1 byte boolean */ new DBValue<>(inStream.readBoolean(), Type.BOOL8, name, description);
+            case PAD_16 -> {
+                inStream.readNBytes(2);
+                yield new Padding(type);
+            }
+            case PAD_24 -> {
+                inStream.readNBytes(3);
+                yield new Padding(type);
+            }
+            case PAD_32 -> {
+                inStream.readNBytes(4);
+                yield new Padding(type);
+            }
         };
     }
 
@@ -66,6 +90,29 @@ public class DBValue<T> {
         INTEGER,
         FLOAT,
         BOOL,
-        BOOL8,
+
+        PAD_8,
+        PAD_16,
+        PAD_24,
+        PAD_32
+    }
+
+    public static class Padding extends DBValue<NullType> {
+        private final int numBytes;
+
+        public Padding(Type type) {
+            super(null, type, "<padding>", "");
+            this.numBytes = switch (type) {
+                case PAD_8 -> 1;
+                case PAD_16 -> 2;
+                case PAD_24 -> 3;
+                case PAD_32 -> 4;
+                default -> throw new RuntimeException("Attempted to create Padding value from non PAD type");
+            };
+        }
+
+        public int getNumBytes() {
+            return numBytes;
+        }
     }
 }

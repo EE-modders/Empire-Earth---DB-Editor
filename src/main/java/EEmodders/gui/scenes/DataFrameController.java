@@ -2,6 +2,7 @@ package EEmodders.gui.scenes;
 
 import EEmodders.database.DBRow;
 import EEmodders.database.DBTable;
+import EEmodders.database.DBValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -34,19 +35,30 @@ public class DataFrameController {
         dbValueGrid.getChildren().clear();
 
         var values = dbRow.getDBValues();
-        for (int i = 0; i < values.size(); i++) {
-            var value = values.get(i);
-
-            var input = new TextField(value.getValue().toString());
-            var label = new Label("(%s) %s".formatted(i, value.getName()));
-            label.setLabelFor(input);
-
-            var layout = new VBox(label, input);
+        int index = 0;
+        for (var value : values) {
+            var layout = new VBox();
             layout.setSpacing(5d);
 
-            dbValueGrid.add(layout, i%tableWidth, i/tableWidth);
+            if (value instanceof DBValue.Padding paddingValue) {
+                var labelName = new Label(paddingValue.getName());
+                var labelValue = new Label(String.valueOf(paddingValue.getNumBytes()));
+
+                layout.getChildren().addAll(labelName, labelValue);
+            } else {
+                var input = new TextField(value.getValue().toString());
+                var label = new Label("(%s) %s".formatted(index, value.getName()));
+                label.setLabelFor(input);
+
+                layout.getChildren().addAll(label, input);
+            }
+
+            dbValueGrid.add(layout, index%tableWidth, index/tableWidth);
             GridPane.setHgrow(layout, Priority.ALWAYS);
+
+            index++;
         }
+
         // TODO add change listener
 
         dbValueGrid.setHgap(10d);

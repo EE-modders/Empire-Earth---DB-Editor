@@ -43,17 +43,14 @@ public class DBTable {
             int numRows = inStream.readInt();
 
             List<DBRow> rows = new ArrayList<>(numRows);
+            // NOTE: here is some potential for performance optimisation
             List<String[]> entries = getDBStructure();
 
             for (int i = 0; i < numRows; i++) {
                 List<DBValue<?>> values = new ArrayList<>(entries.size());
 
                 for (var entry : entries) {
-                    String name = entry[0];
-                    DBValue.Type type = DBValue.Type.valueOf(entry[1]);
-                    String description = entry[2];
-
-                    DBValue<?> value = DBValue.readFrom(inStream, type, name, description);
+                    DBValue<?> value = DBValue.readFrom(inStream, entry);
                     values.add(value);
 
                     System.out.printf("Read value: %s%n", value);
@@ -84,16 +81,10 @@ public class DBTable {
 
         for (var s : structure) {
             var fields = s.split(";");
-            if (fields.length < 2) {
-                throw new ParseException("less than 2 fields in %s structure".formatted(filename), fields.length);
+            if (fields.length < 1) {
+                throw new ParseException("%s structure has no entries".formatted(filename), fields.length);
             }
-
-            String[] res = new String[] {
-                    fields[0].strip(),
-                    fields[1].strip(),
-                    fields.length > 2 ? fields[2].strip() : ""
-            };
-            parsedStructure.add(res);
+            parsedStructure.add(fields);
         }
 
         return parsedStructure;
