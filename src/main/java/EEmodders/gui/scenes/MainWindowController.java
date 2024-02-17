@@ -1,21 +1,17 @@
 package EEmodders.gui.scenes;
 
-import EEmodders.Core;
 import EEmodders.Main;
+import EEmodders.Utils.Util;
 import EEmodders.database.DBMapping;
 import EEmodders.database.DBTable;
 import EEmodders.database.DBType;
-import EEmodders.datmanager.DatFile;
 import EEmodders.datmanager.Settings;
-import EEmodders.Utils.Util;
-import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.DirectoryChooser;
@@ -87,13 +83,16 @@ public class MainWindowController {
                 var tab = new Tab(tabName);
                 tab.setClosable(true);
 
-                var placeholder = new Label(table.getFilename());
-                var tabContent = new AnchorPane(placeholder);
+                //var tabContent = generateTabContent(table);
+                var tabContent = DataFrameController.loadDataFrame(table, 5);
 
-                AnchorPane.setTopAnchor(placeholder, 0d);
-                AnchorPane.setBottomAnchor(placeholder, 0d);
-                AnchorPane.setLeftAnchor(placeholder, 0d);
-                AnchorPane.setRightAnchor(placeholder, 0d);
+                /*
+                var anchor = new AnchorPane(tabContent);
+                AnchorPane.setTopAnchor(tabContent, 0d);
+                AnchorPane.setBottomAnchor(tabContent, 0d);
+                AnchorPane.setLeftAnchor(tabContent, 0d);
+                AnchorPane.setRightAnchor(tabContent, 0d);
+                 */
 
                 tab.setContent(tabContent);
                 mainTabs.getTabs().add(tab);
@@ -102,6 +101,25 @@ public class MainWindowController {
 
             dbButtonList.getChildren().add(btn);
         }
+    }
+
+    private Node generateTabContent(DBTable dbTable) {
+        final int tableWidth = 5;
+
+        var grid = new GridPane();
+        grid.setGridLinesVisible(true);
+
+        var values = dbTable.getDBRows().get(0).getDBValues();
+        for (int i = 0; i < values.size(); i++) {
+            var val = values.get(i);
+            var c = new Label("%s: %s".formatted(val.getName(), val.getValue()));
+
+            grid.add(c, i%tableWidth, i/tableWidth);
+            GridPane.setHgrow(c, Priority.ALWAYS);
+            GridPane.setVgrow(c, Priority.ALWAYS);
+        }
+
+        return grid;
     }
 
     /**

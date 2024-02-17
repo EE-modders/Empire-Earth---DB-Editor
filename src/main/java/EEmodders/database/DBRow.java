@@ -9,12 +9,28 @@ public class DBRow {
         this.dbValues = values;
     }
 
-    public List<DBValue<?>> getDbValues() {
+    public List<DBValue<?>> getDBValues() {
         return dbValues;
     }
 
-    @Override
-    public String toString() {
+    public int getID() {
+        return dbValues.stream()
+                .filter(dbValue -> dbValue.getType() == DBValue.Type.INTEGER)
+                .filter(dbValue -> dbValue.getName().equals("ID"))
+                .map(dbValue -> (int) dbValue.getValue())
+                .findFirst()
+                .orElse(-1);
+    }
+
+    public String getDescription() {
+        return dbValues.stream()
+                .filter(dbValue -> dbValue.getType() == DBValue.Type.STRING)
+                .map(dbValue -> (String) dbValue.getValue())
+                .findFirst()
+                .orElse("<undefined>");
+    }
+
+    public String toStringLong() {
         var sb = new StringBuilder("DBRow{\n");
 
         for (var value : dbValues) {
@@ -22,5 +38,10 @@ public class DBRow {
         }
 
         return sb.append("}").toString();
+    }
+
+    @Override
+    public String toString() {
+        return "(%s) %s".formatted(getID(), getDescription());
     }
 }

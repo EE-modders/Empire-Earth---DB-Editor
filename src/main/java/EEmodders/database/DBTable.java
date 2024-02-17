@@ -53,20 +53,10 @@ public class DBTable {
                     DBValue.Type type = DBValue.Type.valueOf(entry[1]);
                     String description = entry[2];
 
-                    DBValue<?> value = switch (type) {
-                        case STRING -> {
-                            byte[] chars = new byte[100];
-                            int n = inStream.read(chars);
-                            if (n != 100) {
-                                throw new ParseException("String shorter than expected length", n);
-                            }
-
-                            yield new DBValue<>(Util.fromCString(chars), DBValue.Type.STRING, name, description);
-                        }
-                        case INTEGER -> new DBValue<>(inStream.readInt(), DBValue.Type.INTEGER, name, description);
-                    };
-
+                    DBValue<?> value = DBValue.readFrom(inStream, type, name, description);
                     values.add(value);
+
+                    System.out.printf("Read value: %s%n", value);
                 }
 
                 var r = new DBRow(values);
@@ -127,5 +117,9 @@ public class DBTable {
 
     public Exception getLoadException() {
         return loadException;
+    }
+
+    public List<DBRow> getDBRows() {
+        return dbRows;
     }
 }
