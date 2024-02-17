@@ -1,0 +1,97 @@
+## Database structure definitions for Empire Earth Classic (EEC)
+# zocker_160, Empire Earth: Reborn 2024
+#
+## Supported types:
+# STRING, INTEGER, FLOAT, BOOL, BOOL8
+
+dbaiunittargeting.dat:
+  - Description;STRING
+  - ID;INTEGER
+  - Value;INTEGER
+  - Attacking;INTEGER
+  - Close;INTEGER
+  - InWeaponRange;INTEGER
+  - Slower;INTEGER
+  - Weaker;INTEGER
+  - PreferredTarget;INTEGER
+  - ToHitFactor;INTEGER
+  - Proximity Boundary;INTEGER
+  - Stationary Unit;INTEGER
+  - PlaceHolder2;INTEGER
+  - PlaceHolder3;INTEGER
+  - PlaceHolder4;INTEGER
+  - Threshold;INTEGER
+
+dbambientsounds.dat:
+  - Description;STRING
+  - ID;INTEGER
+  - Value;INTEGER
+  - Sound Object;INTEGER
+  - Max Volume;FLOAT
+  - Start Volume;FLOAT
+  - Fade In Percent;FLOAT
+  - Fade Out Percent;FLOAT
+  - Percent Chance;FLOAT
+  - PlaceHoldFloat2;FLOAT
+  - PlaceHoldFloat3;FLOAT
+  - PlaceHoldFloat4;FLOAT
+  - Seconds Between playing;INTEGER
+  - PlaceHoldInt2;INTEGER
+
+dbanimals.dat:
+  - Description;STRING
+  - ID;INTEGER
+  - Value;INTEGER
+  - Object;INTEGER
+  - Herd Min Size;INTEGER
+  - Herd Max Size;INTEGER
+  - Reproductive;BOOL
+  - Reproductive Min Time;INTEGER
+  - Reproductive Max Time;INTEGER
+  - Leadership;BOOL8
+  - Herd-able by Dogs;BOOL8
+  - Unused;BOOL8 # padding
+  - Unused;BOOL8 # padding
+  - Area Preference 1;INTEGER
+  - Area Preference 2;INTEGER
+  - Area Preference 3;INTEGER
+  - Area Preference 4;INTEGER
+  - Digestive;BOOL
+  - New Area Chance;FLOAT
+  - New Area Min Time;INTEGER
+  - New Area Max Time;INTEGER
+  - Movement Min Distance;INTEGER
+  - Movement Max Distance;INTEGER
+  - Movement Min Time (sec);INTEGER
+  - Movement Max Time (sec);INTEGER
+  - Stay near player;BOOL8
+  - Hunter;BOOL8
+  - Avoid Towns;BOOL8
+  - Parental Vengance;BOOL8
+  - Group Attack;BOOL8
+  - Group Flee;BOOL8
+  - Unused;BOOL8 # padding
+  - Unused;BOOL8 # padding
+  - GrowthStartAmount;FLOAT
+  - GrowthRateIncrement;FLOAT
+  - GrowthRateTime;INTEGER
+  - DistanceToJoinHerd;INTEGER
+  - Hunt Min Time;INTEGER
+  - Hunt Max Time;INTEGER
+  - Hunt Chance;FLOAT
+  - Stalk Min Time;INTEGER
+  - Stalk Max Time;INTEGER
+  - LeaderGraphic;INTEGER
+  - RandomGraphic1;INTEGER
+  - RandomGraphic2;INTEGER
+  - RandomGraphic3;INTEGER
+  - PlaceHold Int 1;INTEGER
+  - PlaceHold Int 2;INTEGER
+  - PlaceHold Int 3;INTEGER
+  - PlaceHold Int 4;INTEGER
+  - PlaceHold Bool 1;BOOL8
+  - PlaceHold Bool 2;BOOL8
+  - PlaceHold Bool 3;BOOL8
+  - PlaceHold Bool 4;BOOL8
+  - PlaceHold Float 1;FLOAT
+  - PlaceHold Float 2;FLOAT

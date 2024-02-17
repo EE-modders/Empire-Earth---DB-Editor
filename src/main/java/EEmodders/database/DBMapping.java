@@ -2,7 +2,6 @@ package EEmodders.database;
 
 import EEmodders.Main;
 import EEmodders.Utils.Util;
-import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
@@ -21,15 +20,17 @@ import java.util.stream.Collectors;
 @SuppressWarnings("SpellCheckingInspection")
 public class DBMapping {
     private static final Map<String, String> DEBUG_MAPPING = Map.ofEntries(
-            Map.entry("AIUnitTargeting", "dbaiunittargeting.dat"),
-            Map.entry("Ambient Sounds", "ambientsounds.dat")
+            //Map.entry("AIUnitTargeting", "dbaiunittargeting.dat"),
+            //Map.entry("Ambient Sounds", "dbambientsounds.dat")
+            Map.entry("Animals", "dbanimals.dat")
     );
 
     private static final Map<String, String> EE_MAPPING = Map.ofEntries(
-            Map.entry("AI Behavior", "aibehavior.dat"),
+            //Map.entry("AI Behavior", "aibehavior.dat"),
             Map.entry("AIUnitTargeting", "aiunittargeting.dat"),
             Map.entry("Ambient Sounds", "ambientsounds.dat"),
             Map.entry("Animals", "animals.dat"),
+
             Map.entry("Area Effect Table", "areaeffect.dat"),
             Map.entry("Buttons", "buttonsdata.dat"),
             Map.entry("Calamity", "calamity.dat"),
