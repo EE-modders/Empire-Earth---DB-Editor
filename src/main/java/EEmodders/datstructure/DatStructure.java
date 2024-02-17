@@ -78,7 +78,7 @@ public abstract class DatStructure {
 	}
 
 	public static DatStructure[] GetLoadedStructures() {
-		return Arrays.stream(Main.isAOC() ? ALL_AOC_DATSTRUCTURES : ALL_VANILLA_DATSTRUCTURES).filter(ds -> ds.initialized).toArray(DatStructure[]::new);
+		return Arrays.stream(ALL_VANILLA_DATSTRUCTURES).filter(ds -> ds.initialized).toArray(DatStructure[]::new);
 	}
 
 

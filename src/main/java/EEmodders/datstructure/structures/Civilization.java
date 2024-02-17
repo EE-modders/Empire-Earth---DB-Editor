@@ -29,7 +29,8 @@ public class Civilization extends DatStructure {
 
 	@Override
 	public void customInit() throws IOException {
-		if (!Main.isAOC()) { // File structure has been changed in AOC
+		//if (!Main.isAOC()) { // File structure has been changed in AOC
+		if (false) {
 			newEntryValues = new Object[] {
 					0, -1, "<New civilization>", 0, 0f, 0f, 0f, 0f,
 					0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f,

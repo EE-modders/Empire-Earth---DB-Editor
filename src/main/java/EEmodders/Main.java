@@ -11,9 +11,7 @@ import EEmodders.datmanager.DatFile;
 import EEmodders.datmanager.Language;
 import EEmodders.datmanager.Settings;
 import EEmodders.Utils.Util;
-import EEmodders.datstructure.DatStructure;
 import EEmodders.gui.SplashScreen;
-import EEmodders.gui.scenes.DBSelectorController;
 import EEmodders.gui.scenes.MainWindowController;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -29,25 +27,21 @@ import javafx.stage.Stage;
  * Core class. Contains the method main, the main data loaded by the program and some useful methods
  */
 public class Main extends Application {
-	private static DBSelectorController dbSelectorController;
 
 	// TODO remove this nonsense
 	public static final JFrame awtRoot = new JFrame();
 	private static Stage stage;
 
-	/** If true, the editor is in AOC mode */
-	private static boolean bAOC = false;
 	private static final File dataDirectory = Paths.get("EEEditorData").toFile();
 	
-	public static File getDataDirectory() { return new File(dataDirectory, Main.isAOC() ? "AOC" : "Vanilla"); }
-	/**
-	 * Check if the editor is in AOC mode
-	 *
-	 * @return true if editor is in AOC mode, false otherwise
-	 */
-	public static boolean isAOC() { return bAOC; }
+	public static File getDataDirectory() { return new File(dataDirectory, "Vanilla"); }
+
 	public static Stage getStage() { return stage; }
-	public static DBSelectorController getDbSelectorController() { return dbSelectorController; }
+
+	// TODO remove this nonsense
+	public static boolean isAOC() {
+		return false;
+	}
 
 	@Override
 	public void start(Stage stage) throws IOException {
@@ -56,7 +50,7 @@ public class Main extends Application {
 		Main.stage = stage;
 
 		splashScreen.setStatusLabel("init dat structures");
-		DatStructure.initAllStructures(bAOC);
+		//DatStructure.initAllStructures(bAOC);
 
 		// This makes the Language class initialize in background... SSSHHH!!!
 		final var languageThread = new Thread(Language::updateLanguages);

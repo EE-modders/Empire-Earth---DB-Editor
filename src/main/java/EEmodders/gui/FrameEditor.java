@@ -170,7 +170,7 @@ public class FrameEditor extends JFrame implements WindowListener, WindowFocusLi
 	 * @param datFile The data loaded
 	 */
 	public FrameEditor(DatFile datFile) {
-		super("Empire Earth - " + (Main.isAOC() ? "Art of Conquest - " : "") + datFile.getName());
+		super("Empire Earth - " + datFile.getName());
 		this.datFile = datFile;
 
 		isDbObject = datFile.datStructure == Objects.instance;
@@ -461,7 +461,8 @@ public class FrameEditor extends JFrame implements WindowListener, WindowFocusLi
 		DB_SPECIFIC:
 		{
 			if (isDbObject) {
-				final int first = Main.isAOC() ? 253 : 251;
+				//final int first = Main.isAOC() ? 253 : 251;
+				final int first = 251;
 				Link val;
 				for (int i = 0; i < 200; i++) {
 					val = (Link) baseFields.get(first + i).getVal();
