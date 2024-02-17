@@ -132,3 +132,15 @@ dbareaeffect.dat:
   - BOOL;AreaEffectBool4
   - BOOL;AreaEffectBool5
   - PAD_24
+
+dbbuttons.dat:
+  - STRING;Description
+  - STRING;Texture File Name
+  - INTEGER;ID
+  - INTEGER;Value
+  - INTEGER;Row
+  - INTEGER;Col
+  - INTEGER;UI Location
+  - INTEGER;Action Hot Key
+  #- INTEGER;Parent Object # removed?
+

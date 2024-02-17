@@ -66,6 +66,8 @@ public class DBTable {
         } catch (Exception e) {
             loadFailed = true;
             loadException = e;
+
+            e.printStackTrace();
         } finally {
             loaded = true;
         }
