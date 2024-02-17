@@ -3,6 +3,7 @@
 /EE_db
 /EE_AoC_db
 
+\!*/
 *.directory
 *.idea
 *.zip
@@ -11,3 +12,4 @@
 *.jar
 
 doc_old/
+Screenshot*.png
