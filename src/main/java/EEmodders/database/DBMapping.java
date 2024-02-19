@@ -28,11 +28,14 @@ public class DBMapping {
             //Map.entry("Calamity", "dbcalamity.dat")
             //Map.entry("Civilization", "dbcivilization.dat")
             //Map.entry("Cliff Terrain", "dbcliffterrain.dat")
-            Map.entry("ColorTable", "dbcolortable.dat")
+            //Map.entry("ColorTable", "dbcolortable.dat")
+            Map.entry("AI Behavior", "dbcpbehavior.dat")
+
+            //Map.entry("Control Events", "uicontrolevents.dat")
     );
 
     private static final Map<String, String> EE_MAPPING = Map.ofEntries(
-            //Map.entry("AI Behavior", "aibehavior.dat"),
+            Map.entry("AI Behavior", "dbcpbehavior.dat"),
             Map.entry("AIUnitTargeting", "aiunittargeting.dat"),
             Map.entry("Ambient Sounds", "ambientsounds.dat"),
             Map.entry("Animals", "animals.dat"),
@@ -42,8 +45,8 @@ public class DBMapping {
             Map.entry("Civilization", "civilization.dat"),
             Map.entry("Cliff Terrain", "cliff.dat"),
             Map.entry("ColorTable", "colortabledata.dat"),
-
             Map.entry("Control Events", "uicontrolevents.dat"),
+
             Map.entry("Effect", "effects.dat"),
             Map.entry("Event", "events.dat"),
             Map.entry("Event Details", "eventdetails.dat"),

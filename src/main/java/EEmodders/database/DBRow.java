@@ -19,7 +19,7 @@ public class DBRow {
                 .filter(dbValue -> dbValue.getName().equals("Name"))
                 .map(dbValue -> (String) dbValue.getValue())
                 .findFirst()
-                .orElse("<undefined>");
+                .orElse("<>");
     }
 
     public int getID() {

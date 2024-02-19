@@ -299,3 +299,22 @@ dbcolortable.dat:
   - INTEGER;PlaceHolder4
   - FLOAT;PlaceHolderFloat1
   - FLOAT;PlaceHolderFloat2
+
+# TODO: name and description are hard coded and not exported to the database files
+dbcpbehavior.dat:
+  - INTEGER;ID
+  - INTEGER;Value
+  - INTEGER;Scen Min Int1
+  - INTEGER;Scen Max Int1
+  - INTEGER;Integer1
+  - INTEGER;Scen Min Int2
+  - INTEGER;Scen Max Int2
+  - INTEGER;Integer2
+  - INTEGER;Object
+  - INTEGER;Scen Min Float
+  - INTEGER;Scen Max Float
+  - INTEGER;Scen Float Divisor
+  - FLOAT;Float
+  - BOOL;Use In Scen Editor
+  - PAD_24
+
