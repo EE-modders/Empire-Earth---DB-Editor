@@ -269,3 +269,14 @@ dbcivilization.dat:
   - FLOAT;PlaceHolder9 Cost
   - FLOAT;PlaceHolder10 Effect
   - FLOAT;PlaceHolder10 Cost
+
+dbcliffterrain.dat:
+  - STRING;Name
+  - INTEGER;ID
+  - INTEGER;Value
+  - INTEGER;Start Random Cliff Terrain ID
+  - INTEGER;End Random Cliff Terrain ID
+  - INTEGER;String ID
+  - BOOL;Include In Scen Editor
+  - PAD_24
+
