@@ -188,4 +188,84 @@ dbcalamity.dat:
   - PAD_24
   #- FLOAT;Range # removed?
 
-
+dbcivilization.dat:
+  - INTEGER;ID
+  - INTEGER;Value
+  - STRING;Name
+  - INTEGER;Category String ID
+  - INTEGER;Cumulative Cost
+  - INTEGER;Unit Set
+  - FLOAT;Attack Effect
+  - FLOAT;Attack Cost
+  - FLOAT;Hit Point Effect
+  - FLOAT;Hit Point Cost
+  - FLOAT;ROF Effect
+  - FLOAT;ROF Cost
+  - FLOAT;Armor Effect
+  - FLOAT;Armor Cost
+  - FLOAT;Range Effect
+  - FLOAT;Range Cost
+  - FLOAT;Speed Effect
+  - FLOAT;Speed Cost
+  - FLOAT;Flight Range Effect
+  - FLOAT;Flight Range Cost
+  - FLOAT;Area Damage Effect
+  - FLOAT;Area Damage Cost
+  - FLOAT;Hunting and Foraging Effect
+  - FLOAT;Hunting and Foraging Cost
+  - FLOAT;Wood Cutting Effect
+  - FLOAT;Wood Cutting Cost
+  - FLOAT;Gold Mining Effect
+  - FLOAT;Gold Mining Cost
+  - FLOAT;Farming Effect
+  - FLOAT;Farming Cost
+  - FLOAT;Stone Mining Effect
+  - FLOAT;Stone Mining Cost
+  - FLOAT;Iron Mining Effect
+  - FLOAT;Iron Mining Cost
+  - FLOAT;Training Time Effect
+  - FLOAT;Training Time Cost
+  - FLOAT;Conversion Effect
+  - FLOAT;Conversion Cost
+  - FLOAT;Fishing Effect
+  - FLOAT;Fishing Cost
+  - FLOAT;Repair Effect
+  - FLOAT;Repair Cost
+  - FLOAT;Area Effect Radius Effect
+  - FLOAT;Area Effect Radius Cost
+  - FLOAT;Elevation Bonus Effect
+  - FLOAT;Elevation Bonus Cost
+  - FLOAT;Pop Cap Effect
+  - FLOAT;Pop Cap Cost
+  - FLOAT;Area Effect Conversion Effect
+  - FLOAT;Area Effect Conversion Cost
+  - FLOAT;Resource Cost Reduction Effect
+  - FLOAT;Resource Cost Reduction Cost
+  - FLOAT;Night LOS Effect
+  - FLOAT;Night LOS Cost
+  - FLOAT;Slavery Resistance Effect
+  - FLOAT;Slavery Resistance Cost
+  - FLOAT;Capital Upgrade Effect
+  - FLOAT;Capital Upgrade Cost
+  - FLOAT;Heroes Effect
+  - FLOAT;Heroes Cost
+  - FLOAT;PlaceHolder1 Effect
+  - FLOAT;PlaceHolder1 Cost
+  - FLOAT;PlaceHolder2 Effect
+  - FLOAT;PlaceHolder2 Cost
+  - FLOAT;PlaceHolder3 Effect
+  - FLOAT;PlaceHolder3 Cost
+  - FLOAT;PlaceHolder4 Effect
+  - FLOAT;PlaceHolder4 Cost
+  - FLOAT;PlaceHolder5 Effect
+  - FLOAT;PlaceHolder5 Cost
+  - FLOAT;PlaceHolder6 Effect
+  - FLOAT;PlaceHolder6 Cost
+  - FLOAT;PlaceHolder7 Effect
+  - FLOAT;PlaceHolder7 Cost
+  - FLOAT;PlaceHolder8 Effect
+  - FLOAT;PlaceHolder8 Cost
+  - FLOAT;PlaceHolder9 Effect
+  - FLOAT;PlaceHolder9 Cost
+  - FLOAT;PlaceHolder10 Effect
+  - FLOAT;PlaceHolder10 Cost

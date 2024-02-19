@@ -25,7 +25,8 @@ public class DBMapping {
             //Map.entry("Animals", "dbanimals.dat")
             //Map.entry("Area Effect Table", "dbareaeffect.dat")
             //Map.entry("Buttons", "dbbuttons.dat")
-            Map.entry("Calamity", "dbcalamity.dat")
+            //Map.entry("Calamity", "dbcalamity.dat")
+            Map.entry("Civilization", "dbcivilization.dat")
     );
 
     private static final Map<String, String> EE_MAPPING = Map.ofEntries(
@@ -36,8 +37,8 @@ public class DBMapping {
             Map.entry("Area Effect Table", "areaeffect.dat"),
             Map.entry("Buttons", "buttonsdata.dat"),
             Map.entry("Calamity", "calamity.dat"),
-
             Map.entry("Civilization", "civilization.dat"),
+
             Map.entry("Cliff Terrain", "cliff.dat"),
             Map.entry("ColorTable", "colortabledata.dat"),
             Map.entry("Control Events", "uicontrolevents.dat"),
