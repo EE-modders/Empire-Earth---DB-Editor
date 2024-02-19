@@ -97,6 +97,8 @@ public class DBValue<T> {
         FLOAT,
         BOOL,
 
+        //COLOR (3xFLOAT)
+
         PAD_8,
         PAD_16,
         PAD_24,

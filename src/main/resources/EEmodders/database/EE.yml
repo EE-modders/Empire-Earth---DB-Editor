@@ -280,3 +280,22 @@ dbcliffterrain.dat:
   - BOOL;Include In Scen Editor
   - PAD_24
 
+dbcolortable.dat:
+  - STRING;Name
+  - INTEGER;ID
+  - INTEGER;Value
+  - FLOAT;Player Red
+  - FLOAT;Player Green
+  - FLOAT;Player Blue
+  - FLOAT;MiniMap Red
+  - FLOAT;MiniMap Green
+  - FLOAT;MiniMap Blue
+  - FLOAT;World Red
+  - FLOAT;World Green
+  - FLOAT;World Blue
+  - INTEGER;PlaceHolder1
+  - INTEGER;PlaceHolder2
+  - INTEGER;PlaceHolder3
+  - INTEGER;PlaceHolder4
+  - FLOAT;PlaceHolderFloat1
+  - FLOAT;PlaceHolderFloat2
