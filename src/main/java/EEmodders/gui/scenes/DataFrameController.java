@@ -46,7 +46,7 @@ public class DataFrameController {
 
                 layout.getChildren().addAll(labelName, labelValue);
             } else {
-                var input = new TextField(value.getValue().toString());
+                var input = new TextField(value.getValueAsString());
                 var label = new Label("(%s) %s".formatted(index, value.getName()));
                 label.setLabelFor(input);
 

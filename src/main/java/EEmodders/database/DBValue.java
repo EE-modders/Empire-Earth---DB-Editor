@@ -4,7 +4,6 @@ import EEmodders.Utils.Util;
 import com.google.common.io.LittleEndianDataInputStream;
 
 import javax.lang.model.type.NullType;
-import javax.lang.model.type.UnknownTypeException;
 import java.text.ParseException;
 
 public class DBValue<T> {
@@ -66,6 +65,13 @@ public class DBValue<T> {
 
     public T getValue() {
         return value;
+    }
+
+    public String getValueAsString() {
+        return switch (type) {
+            case FLOAT -> Util.numberFormat.format((float) getValue());
+            default -> getValue() == null ? "null" : getValue().toString();
+        };
     }
 
     public Type getType() {
