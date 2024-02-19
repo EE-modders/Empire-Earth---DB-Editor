@@ -13,6 +13,15 @@ public class DBRow {
         return dbValues;
     }
 
+    public String getName() {
+        return dbValues.stream()
+                .filter(dbValue -> dbValue.getType() == DBValue.Type.STRING)
+                .filter(dbValue -> dbValue.getName().equals("Name"))
+                .map(dbValue -> (String) dbValue.getValue())
+                .findFirst()
+                .orElse("<undefined>");
+    }
+
     public int getID() {
         return dbValues.stream()
                 .filter(dbValue -> dbValue.getType() == DBValue.Type.INTEGER)
@@ -22,7 +31,7 @@ public class DBRow {
                 .orElse(-1);
     }
 
-    public String getDescription() {
+    public String getDescription_() {
         return dbValues.stream()
                 .filter(dbValue -> dbValue.getType() == DBValue.Type.STRING)
                 .map(dbValue -> (String) dbValue.getValue())
@@ -42,6 +51,6 @@ public class DBRow {
 
     @Override
     public String toString() {
-        return "(%s) %s".formatted(getID(), getDescription());
+        return "(%s) %s".formatted(getID(), getName());
     }
 }

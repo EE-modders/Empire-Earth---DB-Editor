@@ -13,9 +13,10 @@
 # PAD_32
 
 dbaiunittargeting.dat:
-  - STRING;Description
+  - STRING;Name
   - INTEGER;ID
   - INTEGER;Value
+  #- INTEGER;Description # removed
   - INTEGER;Attacking
   - INTEGER;Close
   - INTEGER;InWeaponRange
@@ -31,7 +32,7 @@ dbaiunittargeting.dat:
   - INTEGER;Threshold
 
 dbambientsounds.dat:
-  - STRING;Description
+  - STRING;Name
   - INTEGER;ID
   - INTEGER;Value
   - INTEGER;Sound Object
@@ -47,7 +48,7 @@ dbambientsounds.dat:
   - INTEGER;PlaceHoldInt2
 
 dbanimals.dat:
-  - STRING;Description
+  - STRING;Name
   - INTEGER;ID
   - INTEGER;Value
   - INTEGER;Object
@@ -99,28 +100,27 @@ dbanimals.dat:
   - INTEGER;PlaceHold Int 4
   - BOOL;PlaceHold Bool 1
   - BOOL;PlaceHold Bool 2
-  - BOOL;PlaceHold Bool 3
-  - BOOL;PlaceHold Bool 4
+  - PAD_16
   - FLOAT;PlaceHold Float 1
   - FLOAT;PlaceHold Float 2
 
 dbareaeffect.dat:
-  - STRING;Description
+  - STRING;Name
   - INTEGER;ID
   - INTEGER;Value
   - INTEGER;Area Effect Type
-  - INTEGER;Focus Range
   - INTEGER;Area Effect Shape
+  - INTEGER;Affected By Graphic Effect
   - INTEGER;Affected Unit Set
   - INTEGER;Sides Affected
   - INTEGER;Graphics Effect
   - INTEGER;Unit Icon Graphic Object
-  - INTEGER;Affected By Graphic Effect
   - INTEGER;AreaEffectInt1
   - INTEGER;AreaEffectInt2
   - INTEGER;AreaEffectInt3
   - INTEGER;AreaEffectInt4
-  - FLOAT;AreaEffectFloat0
+  - INTEGER;AreaEffectInt5
+  - FLOAT;Focus Range
   - FLOAT;AreaEffectFloat1
   - FLOAT;AreaEffectFloat2
   - FLOAT;AreaEffectFloat3
@@ -134,7 +134,7 @@ dbareaeffect.dat:
   - PAD_24
 
 dbbuttons.dat:
-  - STRING;Description
+  - STRING;Name
   - STRING;Texture File Name
   - INTEGER;ID
   - INTEGER;Value
@@ -142,5 +142,50 @@ dbbuttons.dat:
   - INTEGER;Col
   - INTEGER;UI Location
   - INTEGER;Action Hot Key
-  #- INTEGER;Parent Object # removed?
+  #- INTEGER;Parent Object # removed
+
+dbcalamity.dat:
+  - STRING;Name
+  - FLOAT;Generic Float1
+  - FLOAT;Generic Float2
+  - FLOAT;Generic Float3
+  - FLOAT;Generic Float4
+  - FLOAT;Generic Float5
+  - FLOAT;Generic Float6
+  - INTEGER;ID
+  - INTEGER;Value
+  - INTEGER;Calamity Type
+  - INTEGER;Target Type
+  - INTEGER;Duration
+  - INTEGER;Speed
+  - INTEGER;Graphic Effect 1
+  - INTEGER;Graphic Effect 2
+  - INTEGER;Graphic Effect 3
+  - INTEGER;Graphic Effect 4
+  - INTEGER;Graphic Effect 5
+  - INTEGER;Graphic Effect 6
+  - INTEGER;Graphic Effect 7
+  - INTEGER;Object
+  - INTEGER;Generic Int1
+  - INTEGER;Generic Int2
+  - INTEGER;Generic Int3
+  - INTEGER;Generic Int4
+  - INTEGER;Generic Int5
+  - INTEGER;Generic Int6
+  - BOOL;Generic Bool1
+  - BOOL;Generic Bool2
+  - BOOL;Generic Bool3
+  - BOOL;Generic Bool4
+  - BOOL;Generic Bool5
+  - BOOL;Generic Bool6
+  - PAD_16
+  - INTEGER;Sound ID1
+  - INTEGER;Sound ID2
+  - INTEGER;Mana Cost
+  - INTEGER;UnitSetOfValidTargets
+  - INTEGER;String ID
+  - BOOL;Include In Scen Editor
+  - PAD_24
+  #- FLOAT;Range # removed?
+
 
