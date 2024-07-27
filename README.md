@@ -1,23 +1,21 @@
 # Empire-Earth---DB-Editor
 
-An editor for all DB files for the game Empire Earth and the Art of Conquest addon.
+An editor for all DB files for Empire Earth and the Art of Conquest addon.
 
 With this program you'll be able to edit all values contained in the db files.
-You won't need anymore to open these files with an hex editor and do boring conversions hex->int and int->hex.
-This program handle everything and can support any db file.
-It just needs to know the db file structure, which is partially done thanks to the community (thank you all!!)
+There are still a few unknown values, change them at your own risk.
+Please let us know, if you find the meaning of some of them, so we can update it for everybody.
 
-It allows the user to edit all unknown values (change them at your own risk or for testing purposes).
-Please tell us, when you find some unknown values.
+### How to run
 
-### run the software
-
-- in order to run this software, you will need to have at least Java 11 installed - **it will not start with Java 8**
-  (you can test it in a terminal or cmd.exe by running `java --version`)
-- in case you don't have java 11 installed, you can get it from here: https://adoptopenjdk.net/
+- you need a system supported by Java **with at least Java 11 installed**
+  - you can check your currently installed Java version using `java --version`
+  - **NOTE: DB-Editor will not work with Java 8**
 - download the latest version from the [release page](https://github.com/EE-modders/Empire-Earth---DB-Editor/releases)
-- run it ;)
+- make sure you unpack the zip correctly, there should be a .jar file and a folder
+- always keep the folder next to the jar file, there will be errors otherwise
 
-#### documentation on how to use the software can be found in the [wiki](https://github.com/EE-modders/Empire-Earth---DB-Editor/wiki).
+### Links
 
-the original repo can be found in the [here](https://github.com/Forlini91/Empire-Earth---DB-Editor).
+- Tutorials on how to use DB-Editor can be found in the [wiki](https://github.com/EE-modders/Empire-Earth---DB-Editor/wiki)
+- [original repository](https://github.com/Forlini91/Empire-Earth---DB-Editor)
