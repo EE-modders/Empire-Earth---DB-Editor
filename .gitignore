@@ -2,9 +2,17 @@
 /Empire Earth - DB Editor.jar
 /EE_db
 /EE_AoC_db
+/doc_old
+/target
+
+\!*
 
 *.directory
 *.idea
+*.iml
 *.zip
 *.lnk
 *.bak
+*.hexproj
+*.jar
+*.png
