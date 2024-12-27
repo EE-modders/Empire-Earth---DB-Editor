@@ -1,13 +1,17 @@
-/bin
-/target
-/EE_db
-/EE_AoC_db
+bin
+target
+EE_db
+EE_AoC_db
+doc_old/
 
+\!*
 *.directory
 *.idea
 *.zip
 *.lnk
 *.bak
 *.jar
+*.hexproj
+*.png
 
-doc_old/
+*-reduced-pom.xml
