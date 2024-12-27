@@ -93,7 +93,7 @@ public class Core extends Application {
 		dbSelectorController = controller;
 		controller.setLoadDBButton("Select DAT folder for "+aoc);
 		controller.setVersionLabel(Settings.VERSION);
-		controller.setCreditLabel(Settings.DB_ICON_CREDIT+" (King rocks balls!!)");
+		controller.setCreditLabel(Settings.DB_ICON_CREDIT);
 
 		stage.setTitle(Settings.NAME +" ("+aoc+")");
 		stage.getIcons().add(Util.getDBEditorIcon());

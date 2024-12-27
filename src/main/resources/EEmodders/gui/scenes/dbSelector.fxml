@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="473.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EEmodders.gui.scenes.DBSelectorController">
+<AnchorPane prefHeight="473.0" prefWidth="364.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EEmodders.gui.scenes.DBSelectorController">
    <children>
       <BorderPane fx:id="borderPane" prefHeight="336.0" prefWidth="451.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
@@ -36,7 +36,7 @@
          <top>
             <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="332.0" fitWidth="394.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="250.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../DBE_icon.png" />
                      </image>
@@ -48,14 +48,16 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="creditLabel" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" text="&lt;icon credit&gt;" textAlignment="CENTER" textFill="WHITE">
+                     </children>
+                  </VBox>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="creditLabel" alignment="CENTER" contentDisplay="CENTER" text="&lt;icon credit&gt;" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <font>
                               <Font size="12.0" />
                            </font>
                         </Label>
-                     </children>
-                  </VBox>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                     </children></AnchorPane>
                </children>
             </StackPane>
          </top>

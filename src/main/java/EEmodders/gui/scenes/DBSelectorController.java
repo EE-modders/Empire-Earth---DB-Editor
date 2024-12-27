@@ -5,9 +5,11 @@ import EEmodders.datmanager.DatFile;
 import EEmodders.gui.MainFrame;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
@@ -70,7 +72,7 @@ public class DBSelectorController {
             btn.setText(datfile.getPrettyName());
             btn.setTextAlignment(TextAlignment.CENTER);
             btn.setAlignment(Pos.CENTER);
-            btn.setPrefSize(150, 40);
+            btn.setPrefSize(150, 25);
 
             var eventHandler = new EventHandler<MouseEvent>() {
                 @Override
@@ -83,9 +85,13 @@ public class DBSelectorController {
             buttonGrid.add(btn, i%3, i/3);
         }
 
-        borderPane.setCenter(buttonGrid);
+        var scroll = new ScrollPane(buttonGrid);
+        scroll.setPadding(new Insets(10));
+        scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+        borderPane.setCenter(scroll);
 
         Core.getStage().setWidth(500);
-        Core.getStage().setHeight(950);
+        Core.getStage().setHeight(850);
     }
 }

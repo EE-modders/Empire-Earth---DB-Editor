@@ -23,6 +23,6 @@ public class Settings {
 	public static final int LOAD_MAX_WAIT = 10000;
 
 	public static final String DB_ICON = "DBE_icon.png";
-	public static final String DB_ICON_CREDIT = "Icon created by Fortuking"; // (King rocks balls!!)
+	public static final String DB_ICON_CREDIT = "Icon by Fortuking"; // (King rocks balls!!)
 	public static final String EES_URL = "https://github.com/EE-modders/Empire-Earth-Studio-2";
 }
